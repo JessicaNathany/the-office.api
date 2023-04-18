@@ -16,10 +16,8 @@ To get started with the API, clone this repository to your local machine and run
 3. Open a terminal or command prompt and navigate to the project directory.
 4. Run the following command to start the application:
 5. `dotnet run`
+6. The application will start listening on http://localhost:5000
 
-
-
-The application will start listening on http://localhost:5000.
 
 📝 API Documentation
 The API endpoints are documented using Swagger. To view the documentation, follow these steps:
