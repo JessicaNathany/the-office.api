@@ -25,7 +25,7 @@ command to start the application: <br/>
 5. The application will start listening on http://localhost:5000 <br/><br/>
 
 
-📝 ## API Documentation <br/>
+## API Documentation 📝 <br/>
 The API endpoints are documented using Swagger
 
 
