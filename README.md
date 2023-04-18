@@ -1,4 +1,4 @@
-# The Office API :office
+# The Office API
 
  <h4 align="center"> 
 	🚧  Project 🚀 undder construction...  🚧
@@ -7,19 +7,22 @@
 This is a .NET 6 Web API that provides endpoints to access and manage data related to the TV show The Office. The API allows users to retrieve information about characters, episodes, and quotes from the show. <br/><br/>
 
 
-
-
 🚀 Getting Started
 To get started with the API, clone this repository to your local machine and run the following command to start the application:
 
  To get started with the API, follow these steps:
 
-1. Clone this repository to your local machine.
-2. Install .NET 6 if you haven't already. You can download it from here.
-3. Open a terminal or command prompt and navigate to the project directory.
-4. Run the following command to start the application:
-5. `dotnet run`
-6. The application will start listening on http://localhost:5000 <br/><br/>
+1. To run the API on your local machine, you need to have .NET 6 installed on your system. You can download the latest version of .NET 6 here.
+2. Clone this repository to your local machine.
+
+3. Install .NET 6 if you haven't already. You can download it from here(https://dotnet.microsoft.com/download/dotnet/6.0).
+4. Open a terminal or command prompt and navigate to the project directory.
+`https://github.com/JessicaNathany/the-office.api.git`
+5. Next, navigate to the project directory and run the following command to restore the dependencies:
+`dotnet restore`
+6. Finally, run the following command to start the API:
+`dotnet run`
+7. The application will start listening on http://localhost:5000 <br/><br/>
 
 
 📝 API Documentation
