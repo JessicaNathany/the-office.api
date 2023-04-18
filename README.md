@@ -9,8 +9,8 @@ The API allows users to retrieve information about characters, episodes, and quo
 
 
 🚀 Getting Started
-To get started with the API, clone this repository to your local machine and run the following command to start 
-the application: <br/>
+To get started with the API, clone this repository to your local machine and run the following <br/>
+command to start the application: <br/>
 
  To get started with the API, follow these steps:
 
@@ -30,8 +30,8 @@ The API endpoints are documented using Swagger
 
 
 Open a web browser and navigate to http://localhost:5000/swagger.
-This will display the Swagger UI, which provides a user-friendly interface for exploring the API endpoints.
-The API provides the following endpoints:
+This will display the Swagger UI, which provides a user-friendly interface for exploring the API 
+endpoints. The API provides the following endpoints:<br/>
 
 - GET /characters - retrieves a list of all characters in The Office.
 - GET /characters/{id} - retrieves a specific character by ID.
@@ -54,7 +54,8 @@ update...
 
 
 Project status
-This project is currently at version 1.0.0. Below is a list of currently available features and those that will be added in future updates.<br/>
+This project is currently at version 1.0.0. Below is a list of currently available features and those that will<br/> 
+be added in future updates.<br/>
 
 🛠️ Built With
 *. NET 6
@@ -71,3 +72,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 📧 Contact
 If you have any questions or feedback about this project, please feel free to reach out to us at jessicanathany.web@gmail.com<br/><br/>
+update...
