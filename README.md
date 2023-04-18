@@ -17,9 +17,10 @@ The application will start listening on http://localhost:5000.
 To view the API documentation, navigate to http://localhost:5000/swagger in your web browser. This will display the Swagger UI, which provides a user-friendly interface for exploring the API endpoints.
 
 🛠️ Built With
-.NET 6
-Entity Framework Core
-Swagger
+*. NET 6
+* Entity Framework Core
+* Swagger
+
 🤝 Contributing
 Contributions are welcome! To contribute to this project, please fork this repository and submit a pull request.
 
