@@ -47,6 +47,8 @@ update...
 
 ## Next  features: <br/>
 - GET /gifs - retrieves a list of all gifs in The Office.
+- GET /images - retrieves a list of all iamges in The Office.
+- GET /images/character/{id} - retrieves of all iamges in specific character in The Office. <br/>
 
 
 Project status
