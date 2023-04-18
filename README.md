@@ -31,8 +31,7 @@ The API provides the following endpoints:
 - GET /characters/{id} - retrieves a specific character by ID.
 - GET /episodes - retrieves a list of all episodes in The Office.
 - GET /episodes/{id} - retrieves a specific episode by ID.
-- GET /quotes - retrieves a list of all quotes in The Office.
-- GET /quotes/{id} - retrieves a specific quote by ID.
+- GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office.
 
 
 🛠️ Built With
