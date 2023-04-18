@@ -9,6 +9,13 @@ This is a .NET 6 Web API that provides endpoints to access and manage data relat
 🚀 Getting Started
 To get started with the API, clone this repository to your local machine and run the following command to start the application:
 
+ To get started with the API, follow these steps:
+
+- Clone this repository to your local machine.
+- Install .NET 6 if you haven't already. You can download it from here.
+- Open a terminal or command prompt and navigate to the project directory.
+- Run the following command to start the application:
+
 dotnet run
 
 The application will start listening on http://localhost:5000.
