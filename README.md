@@ -15,8 +15,9 @@ To get started with the API, clone this repository to your local machine and run
 2. Install .NET 6 if you haven't already. You can download it from here.
 3. Open a terminal or command prompt and navigate to the project directory.
 4. Run the following command to start the application:
+5. `dotnet run`
 
-`dotnet run`
+
 
 The application will start listening on http://localhost:5000.
 
