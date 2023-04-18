@@ -1,5 +1,18 @@
-﻿################################################################################
-# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
-################################################################################
+# Compile config
+bin/
+obj/
 
-/the-office.api/.vs/the-office.api/v17/.suo
+# NuGet package restore
+**/packages/
+*.nupkg
+
+# Files temp
+**/*.bak
+**/*.log
+**/*.tmp
+
+
+# Fser files
+*.user
+*.suo
+*.userprefs

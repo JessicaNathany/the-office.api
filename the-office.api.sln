@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "the-office.api", "src\the-office.api\the-office.api.csproj", "{BFC9E1E0-A9D6-4CF7-A7CE-05EF48AB150D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "the-office.api", "src\the-office.api\the-office.api.csproj", "{3AC7AE3F-3D43-40C7-B30A-8A8AA7BD66C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BFC9E1E0-A9D6-4CF7-A7CE-05EF48AB150D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BFC9E1E0-A9D6-4CF7-A7CE-05EF48AB150D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BFC9E1E0-A9D6-4CF7-A7CE-05EF48AB150D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BFC9E1E0-A9D6-4CF7-A7CE-05EF48AB150D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC7AE3F-3D43-40C7-B30A-8A8AA7BD66C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC7AE3F-3D43-40C7-B30A-8A8AA7BD66C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC7AE3F-3D43-40C7-B30A-8A8AA7BD66C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC7AE3F-3D43-40C7-B30A-8A8AA7BD66C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {EDAE4203-0EDC-4D45-A85D-28CE6B0B0E54}
+		SolutionGuid = {B9E60394-1A8B-4C28-91FC-787EAE0EFE76}
 	EndGlobalSection
 EndGlobal
