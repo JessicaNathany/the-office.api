@@ -20,7 +20,7 @@ To get started with the API, clone this repository to your local machine and run
 
 
 📝 API Documentation
-The API endpoints are documented using Swagger. To view the documentation, follow these steps:
+The API endpoints are documented using Swagger
 
 Open a web browser and navigate to http://localhost:5000/swagger.
 This will display the Swagger UI, which provides a user-friendly interface for exploring the API endpoints.
