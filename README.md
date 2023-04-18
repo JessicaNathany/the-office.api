@@ -8,13 +8,13 @@ This is a .NET 6 Web API that provides endpoints to access and manage data relat
 The API allows users to retrieve information about characters, episodes, and quotes from the show. <br/><br/>
 
 
-🚀 Getting Started
+##  Getting Started 🚀
 To get started with the API, clone this repository to your local machine and run the following <br/>
 command to start the application: <br/>
 
- To get started with the API, follow these steps:
+To get started with the API, follow these steps: <br/>
 
-## Installation
+## Installation 
 
 1. Install .NET 6 if you haven't already. You can download it from [here](https://dotnet.microsoft.com/download/dotnet/6.0).
 2. Clone this repository to your local machine.`https://github.com/JessicaNathany/the-office.api.git`
