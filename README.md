@@ -9,13 +9,14 @@ The API allows users to retrieve information about characters, episodes, and quo
 
 
 🚀 Getting Started
-To get started with the API, clone this repository to your local machine and run the following command to start the application:
+To get started with the API, clone this repository to your local machine and run the following command to start 
+the application: <br/>
 
  To get started with the API, follow these steps:
 
 ## Installation
 
-1. Install .NET 6 if you haven't already. You can download it from [here](https://dotnet.microsoft.com/download/dotnet/6.0)].
+1. Install .NET 6 if you haven't already. You can download it from [here](https://dotnet.microsoft.com/download/dotnet/6.0).
 2. Clone this repository to your local machine.`https://github.com/JessicaNathany/the-office.api.git`
 3. Next, navigate to the project directory and run the following command to restore the dependencies:
 `dotnet restore`
