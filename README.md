@@ -21,7 +21,19 @@ To get started with the API, clone this repository to your local machine and run
 The application will start listening on http://localhost:5000.
 
 📝 API Documentation
-To view the API documentation, navigate to http://localhost:5000/swagger in your web browser. This will display the Swagger UI, which provides a user-friendly interface for exploring the API endpoints.
+The API endpoints are documented using Swagger. To view the documentation, follow these steps:
+
+Open a web browser and navigate to http://localhost:5000/swagger.
+This will display the Swagger UI, which provides a user-friendly interface for exploring the API endpoints.
+The API provides the following endpoints:
+
+- GET /characters - retrieves a list of all characters in The Office.
+- GET /characters/{id} - retrieves a specific character by ID.
+- GET /episodes - retrieves a list of all episodes in The Office.
+- GET /episodes/{id} - retrieves a specific episode by ID.
+- GET /quotes - retrieves a list of all quotes in The Office.
+- GET /quotes/{id} - retrieves a specific quote by ID.
+
 
 🛠️ Built With
 *. NET 6
