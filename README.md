@@ -45,7 +45,8 @@ The API provides the following endpoints:
 <br/><br/>
 
 🤝 Contributing
-Contributions are welcome! To contribute to this project, please fork this repository and submit a pull request.<br/><br/>
+Contributions are welcome! <br>
+To contribute to this project, please fork this repository and submit a pull request.<br/><br/>
 
 📄 License
 This project is licensed under the MIT License - see the LICENSE.md file for details.<br/><br/>
