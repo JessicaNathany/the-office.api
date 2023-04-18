@@ -12,17 +12,16 @@ To get started with the API, clone this repository to your local machine and run
 
  To get started with the API, follow these steps:
 
-1. To run the API on your local machine, you need to have .NET 6 installed on your system. You can download the latest version of .NET 6 here.
-2. Clone this repository to your local machine.
+## Installation
 
-3. Install .NET 6 if you haven't already. You can download it from here(https://dotnet.microsoft.com/download/dotnet/6.0).
-4. Open a terminal or command prompt and navigate to the project directory.
+1. Install .NET 6 if you haven't already. You can download it from [here(https://dotnet.microsoft.com/download/dotnet/6.0)].
+2. Clone this repository to your local machine.
 `https://github.com/JessicaNathany/the-office.api.git`
-5. Next, navigate to the project directory and run the following command to restore the dependencies:
+3. Next, navigate to the project directory and run the following command to restore the dependencies:
 `dotnet restore`
-6. Finally, run the following command to start the API:
+4. Finally, run the following command to start the API:
 `dotnet run`
-7. The application will start listening on http://localhost:5000 <br/><br/>
+5. The application will start listening on http://localhost:5000 <br/><br/>
 
 
 📝 API Documentation
