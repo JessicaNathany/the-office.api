@@ -104,5 +104,7 @@ To contribute to this project, please fork this repository and submit a pull req
 This project is licensed under the MIT License - see the LICENSE.md file for details.<br/><br/>
 
 📧 Contact
-If you have any questions or feedback about this project, please feel free to reach out to us at jessicanathany.web@gmail.com<br/><br/>
-update...
+
+Made with ♥ by **Jéssica Natahny** 👋: [Get in touch!](https://www.linkedin.com/in/JessicaNathany/)
+
+By the way, guess who suggested this readme?... You're welcome 🥰
