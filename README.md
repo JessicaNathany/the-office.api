@@ -91,6 +91,7 @@ be added in future updates.<br/>
 - [Moq](https://www.nuget.org/packages/Moq)
 - [AutoMoq](https://www.nuget.org/packages/AutoMoq)
 - [Newtonsoft](https://www.nuget.org/packages/Newtonsoft.Json)
+- [MediatR](https://www.nuget.org/packages/MediatR)
 <br/><br/>
 
 🤝 Contributing
