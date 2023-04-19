@@ -17,6 +17,25 @@
 This is a .NET 6 Web API that provides endpoints to access and manage data related to the TV show The Office. <br/>
 The API allows users to retrieve information about characters, episodes, and quotes from the show. <br/><br/>
 
+## API Documentation 📝 <br/>
+The API endpoints are documented using Swagger
+
+Open a web browser and navigate to http://localhost:5000/swagger.
+This will display the Swagger UI, which provides a user-friendly interface for exploring the API 
+endpoints. The API provides the following endpoints:<br/>
+
+- GET /characters - retrieves a list of all characters in The Office.
+- GET /characters/{id} - retrieves a specific character by ID.
+- GET /episodes - retrieves a list of all episodes in The Office.
+- GET /episodes/{id} - retrieves a specific episode by ID.
+- GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office.<br/><br/>
+
+
+1. `*Presentation Layer*`
+  - Name: the-office.api<br/>
+  - Description: This layer is responsible for exposing the API to the outside world, i.e. it receives HTTP requests, <br/>
+    processes them and returns the responses. It is in this layer that most of the API configurations are done.
+
 
 ##  Getting Started 🚀
 To get started with the API, clone this repository to your local machine and run the following <br/>
@@ -35,20 +54,7 @@ To get started with the API, follow these steps: <br/>
 5. The application will start listening on http://localhost:5000 <br/><br/>
 
 
-## API Documentation 📝 <br/>
-The API endpoints are documented using Swagger
 
-
-Open a web browser and navigate to http://localhost:5000/swagger.
-This will display the Swagger UI, which provides a user-friendly interface for exploring the API 
-endpoints. The API provides the following endpoints:<br/>
-
-- GET /characters - retrieves a list of all characters in The Office.
-- GET /characters/{id} - retrieves a specific character by ID.
-- GET /episodes - retrieves a list of all episodes in The Office.
-- GET /episodes/{id} - retrieves a specific episode by ID.
-- GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office.<br/><br/>
-update...
 
 ## Current features: <br/>
 - GET /characters - retrieves a list of all characters in The Office.
