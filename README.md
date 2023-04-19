@@ -70,7 +70,7 @@ To get started with the API, follow these steps: <br/>
 5. The application will start listening on http://localhost:5000 <br/><br/>
 
 
-## Current features :memo <br/>
+## Current features :memo: <br/>
 - GET /characters - retrieves a list of all characters in The Office.
 - GET /characters/{id} - retrieves a specific character by ID.
 - GET /episodes - retrieves a list of all episodes in The Office.
