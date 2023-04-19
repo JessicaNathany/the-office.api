@@ -11,13 +11,9 @@
    <img src=" https://img.shields.io/badge/Status-development-green"/>  
 </p>
 
+[🇧🇷 Portuguese version](/[README.pt-br.md](https://github.com/JessicaNathany/the-office.api/edit/main/README.pt-BR.md))
 
-
-	🇧🇷 -  [Portuguese version](https://github.com/JessicaNathany/the-office.api/edit/main/README.pt-BR.md) 
-	[Moq](https://www.nuget.org/packages/Moq)
- 
-
-
+	
  <h4 align="center"> 
 	🚧  Project 🚀 under construction...  🚧
  </h4>
