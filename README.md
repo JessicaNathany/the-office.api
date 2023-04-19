@@ -53,13 +53,13 @@ endpoints. The API provides the following endpoints:<br/>
   ![image](https://user-images.githubusercontent.com/11943572/233072285-dd0c4ffd-eb50-4d27-ada9-2789191fcfb4.png)
 
 
-##  Getting Started 🚀
+##  Getting Started 🚀<br/>
 To get started with the API, clone this repository to your local machine and run the following <br/>
 command to start the application: <br/>
 
 To get started with the API, follow these steps: <br/>
 
-## Installation 
+## Installation :wrench: <br/>
 
 1. Install .NET 6 if you haven't already. You can download it from [here](https://dotnet.microsoft.com/download/dotnet/6.0).
 2. Clone this repository to your local machine.`https://github.com/JessicaNathany/the-office.api.git`
@@ -70,14 +70,14 @@ To get started with the API, follow these steps: <br/>
 5. The application will start listening on http://localhost:5000 <br/><br/>
 
 
-## Current features: <br/>
+## Current features :memo <br/>
 - GET /characters - retrieves a list of all characters in The Office.
 - GET /characters/{id} - retrieves a specific character by ID.
 - GET /episodes - retrieves a list of all episodes in The Office.
 - GET /episodes/{id} - retrieves a specific episode by ID.
 - GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office
 
-## Next  features: <br/>
+## Next  features :dart: <br/>
 - GET /gifs - retrieves a list of all gifs in The Office.
 - GET /images - retrieves a list of all iamges in The Office.
 - GET /images/character/{id} - retrieves of all iamges in specific character in The Office. <br/>
