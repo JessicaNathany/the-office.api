@@ -87,10 +87,10 @@ Project status
 This project is currently at version 1.0.0. Below is a list of currently available features and those that will<br/> 
 be added in future updates.<br/>
 
-🛠️ Built With
-*. NET 6
-* Entity Framework Core
-* Swagger
+ ## Libraries and Backages 🛠️
+- [Moq](https://www.nuget.org/packages/Moq)
+- [AutoMoq](https://www.nuget.org/packages/AutoMoq)
+- [Newtonsoft](https://www.nuget.org/packages/Newtonsoft.Json)
 <br/><br/>
 
 🤝 Contributing
