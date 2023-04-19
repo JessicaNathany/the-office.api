@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Repository\" />
+    <Folder Include="Data\" />
+    <Folder Include="Request\" />
+    <Folder Include="Response\" />
+    <Folder Include="Data\Repository\Interface\" />
   </ItemGroup>
 
 </Project>
