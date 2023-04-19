@@ -13,7 +13,8 @@
 
 
 
-	🇧🇷  [Portuguese version](https://github.com/JessicaNathany/the-office.api/edit/main/README.pt-BR.md) 
+	🇧🇷 -  [Portuguese version](https://github.com/JessicaNathany/the-office.api/edit/main/README.pt-BR.md) 
+	[Moq](https://www.nuget.org/packages/Moq)
  
 
 
