@@ -11,7 +11,7 @@
    <img src=" https://img.shields.io/badge/Status-development-green"/>  
 </p>
 
-[🇧🇷 Portuguese version](/[README.pt-br.md](https://github.com/JessicaNathany/the-office.api/edit/main/README.pt-BR.md))
+[🇧🇷 Portuguese version](/[README.pt-BR.md](https://github.com/JessicaNathany/the-office.api/blob/main/README.pt-BR.md))
 
 	
  <h4 align="center"> 
