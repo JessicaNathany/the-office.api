@@ -94,11 +94,12 @@ be added in future updates.<br/>
 - [MediatR](https://www.nuget.org/packages/MediatR)
 <br/><br/>
 
-🤝 Contributing
+
+##  Contributing 🤝<br/>
 Contributions are welcome! <br>
 To contribute to this project, please fork this repository and submit a pull request.<br/><br/>
 
-📄 License
+## License 📄
 This project is licensed under the MIT License - see the LICENSE.md file for details.<br/><br/>
 
 📧 Contact
