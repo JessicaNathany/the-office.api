@@ -105,6 +105,6 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 📧 Contact
 
-Made with ♥ by **Jéssica Natahny** 👋: [Get in touch!](https://www.linkedin.com/in/JessicaNathany/)
+Made with ♥ by **Jéssica Natahny** 👋: [Get in touch!](https://www.linkedin.com/in/jessica-nathany-38260868/)
 
 By the way, guess who suggested this readme?... You're welcome 🥰
