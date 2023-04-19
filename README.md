@@ -4,7 +4,7 @@
   <img src="https://img.shields.io/static/v1?label=csharp&message=framework&color=blue&style=for-the-badge&logo=Dotnet"/>
   <img src="http://img.shields.io/static/v1?label=License&message=MIT&color=green&style=for-the-badge"/>
   <img src="http://img.shields.io/static/v1?label=Ruby&message=2.6.3&color=red&style=for-the-badge&logo=C#"/>
-  <img src="http://img.shields.io/static/v1?label=Ruby%20On%20Rails%20&message=6.0.2.2&color=red&style=for-the-badge&logo=c#"/>
+  <img src="http://img.shields.io/static/v1?label=CSharp%20On%20Rails%20&message=6.0.2.2&color=red&style=for-the-badge&logo=csharp"/>
   <img src="http://img.shields.io/static/v1?label=STATUS&message=EM%20DEVELOPMENT&color=RED&style=for-the-badge"/>
 </p>
 
