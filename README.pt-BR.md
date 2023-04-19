@@ -12,10 +12,6 @@
 </p>
 
 
-<h4 align="center"> 
-	🚧  [Portuguese version](https://github.com/JessicaNathany/the-office.api/edit/main/README.pt-BR.md)  🚧
- </h4>
-
 
  <h4 align="center"> 
 	🚧  Project 🚀 em construção...  🚧
