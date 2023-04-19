@@ -47,7 +47,7 @@ endpoints. The API provides the following endpoints:<br/>
   - Description: The application is responsible for defining the application's business concepts and rules. <br/>
     It is in this layer that the entities and object values that the application uses are defined.<br/>
     
-    ![image](https://user-images.githubusercontent.com/11943572/233071771-266613de-3d01-4dbe-9ba1-243c1c06a99b.png)   
+  ![image](https://user-images.githubusercontent.com/11943572/233072285-dd0c4ffd-eb50-4d27-ada9-2789191fcfb4.png)
 
 
 ##  Getting Started 🚀
