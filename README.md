@@ -31,11 +31,45 @@ endpoints. The API provides the following endpoints:<br/>
 - GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office.<br/><br/>
 
 
-1. `*Presentation Layer*`
+1. **Presentation Layer**
   - Name: the-office.api<br/>
   - Description: This layer is responsible for exposing the API to the outside world, i.e. it receives HTTP requests, <br/>
-    processes them and returns the responses. It is in this layer that most of the API configurations are done.
-
+    processes them and returns the responses. It is in this layer that most of the API configurations are done. <br/>
+    
+2. **Application Layer**
+  - Name: the-office.application<br/>
+  - Description: The application layer is responsible for housing the application's business rules, <br/>
+    it uses the services provided by the other layers to perform the required operations. It is in this layer <br/>
+    that the application use cases are implemented. <br/>
+    
+3. **Domain Layer**
+  - Name: the-office.domain<br/>
+  - Description: The application is responsible for defining the application's business concepts and rules. <br/>
+    It is in this layer that the entities and object values that the application uses are defined.<br/>
+    
+`MyProject
+├── the-office.api
+│   ├── Controllers
+│   ├── Filters
+│   ├── Startup.cs
+│   └── ...
+├── the-office.application
+│   ├── Commands
+│   ├── Services
+│   └── ...
+├── the-office.domain
+│   ├── Entities
+│   ├── ValueObjects
+│   ├── Repositories
+│   └── ...
+├── the-office.tests
+│   ├── Integration
+│   ├── Unit
+│   └── ...
+├── the-office.sln
+├── README.md
+└── ...
+`
 
 ##  Getting Started 🚀
 To get started with the API, clone this repository to your local machine and run the following <br/>
@@ -52,8 +86,6 @@ To get started with the API, follow these steps: <br/>
 4. Finally, run the following command to start the API:
 `dotnet run`
 5. The application will start listening on http://localhost:5000 <br/><br/>
-
-
 
 
 ## Current features: <br/>
