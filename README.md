@@ -11,12 +11,9 @@
    <img src=" https://img.shields.io/badge/Status-development-green"/>  
 </p>
 
+[🇧🇷 Portuguese version](/README.pt-BR.md)
 
-
-	🇧🇷  [Portuguese version](https://github.com/JessicaNathany/the-office.api/edit/main/README.pt-BR.md) 
- 
-
-
+	
  <h4 align="center"> 
 	🚧  Project 🚀 under construction...  🚧
  </h4>
@@ -54,7 +51,7 @@ endpoints. The API provides the following endpoints:<br/>
   - Description: The application is responsible for defining the application's business concepts and rules. <br/>
     It is in this layer that the entities and object values that the application uses are defined.<br/>
     
-  ![image](https://user-images.githubusercontent.com/11943572/233072285-dd0c4ffd-eb50-4d27-ada9-2789191fcfb4.png)
+  ![image](https://user-images.githubusercontent.com/11943572/233205631-8d424086-ba08-4d33-8836-3af0bde2e909.png)
 
 
 ##  Getting Started 🚀<br/>
@@ -107,5 +104,7 @@ To contribute to this project, please fork this repository and submit a pull req
 This project is licensed under the MIT License - see the LICENSE.md file for details.<br/><br/>
 
 📧 Contact
-If you have any questions or feedback about this project, please feel free to reach out to us at jessicanathany.web@gmail.com<br/><br/>
-update...
+
+Made with ♥ by **Jéssica Natahny** 👋: [Get in touch!](https://www.linkedin.com/in/jessica-nathany-38260868/)
+
+By the way, guess who suggested this readme?... You're welcome 🥰
