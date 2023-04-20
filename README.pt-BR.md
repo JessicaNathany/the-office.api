@@ -85,7 +85,7 @@ Para começar a utilizar o API, siga estes passos: <br/>
 
 
 Status do projeto
-Este projeto está atualmente na versão 1.0.0. Abaixo está uma lista das características atualmente disponíveis e aquelas que irão
+Este projeto está atualmente na versão 1.0.0. Abaixo está uma lista das características atualmente disponíveis<br/> e aquelas que irão
 ser adicionado em futuras atualizações.<br/>
 
  ## Bibliotecas e pacotes 🛠️
