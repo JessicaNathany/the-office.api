@@ -93,6 +93,7 @@ ser adicionado em futuras atualizações.<br/>
 - [AutoMoq](https://www.nuget.org/packages/AutoMoq)
 - [Newtonsoft](https://www.nuget.org/packages/Newtonsoft.Json)
 - [MediatR](https://www.nuget.org/packages/MediatR)
+- [FluentValidation](https://www.nuget.org/packages/fluentvalidation/)
 <br/><br/>
 
 🤝 Contribuições

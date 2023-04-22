@@ -1,12 +1,9 @@
-﻿namespace the_office.domain.Domain
-{
-    public sealed class Character
-    {
-        /// <summary>
-        /// Id of the Character
-        /// </summary>
-        public int Id { get; set; }
+﻿using the_office.domain.Model;
 
+namespace the_office.domain.Domain
+{
+    public sealed class Character : Entity
+    {
         /// <summary>
         /// Name of the Character
         /// </summary>

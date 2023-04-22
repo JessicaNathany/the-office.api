@@ -1,14 +1,10 @@
 ﻿using Newtonsoft.Json;
+using the_office.domain.Model;
 
 namespace the_office.domain.Domain
 {
-    public sealed class Episode
+    public sealed class Episode : Entity
     {
-        /// <summary>
-        /// Id to find the Episode
-        /// </summary>
-        public int Id { get; set; }
-
         /// <summary>
         /// The name of the episode
         /// </summary>

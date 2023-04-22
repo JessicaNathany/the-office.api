@@ -1,12 +1,9 @@
-﻿namespace the_office.domain.Domain
-{
-    public sealed class Season
-    {
-        /// <summary>
-        /// Id of the Season
-        /// </summary>
-        public int Id { get; set; }
+﻿using the_office.domain.Model;
 
+namespace the_office.domain.Domain
+{
+    public sealed class Season : Entity
+    {
         /// <summary>
         /// Description of the Season
         /// </summary>

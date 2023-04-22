@@ -9,7 +9,9 @@
 
   <ItemGroup>
     <Folder Include="Dto\" />
-    <Folder Include="Enum\" />
+    <Folder Include="Dto\" />
+    <Folder Include="Request\" />
+    <Folder Include="ViewModel\" />
     <Folder Include="ViewModel\" />
   </ItemGroup>
 

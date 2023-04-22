@@ -2,7 +2,7 @@
 
 namespace the_office.api.Controllers
 {
-    public class QuotesController : Controller
+    public class PhrasesController : Controller
     {
         // GET: QuotesController
         public ActionResult Index()
