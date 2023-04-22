@@ -10,7 +10,7 @@ obj/
 **/*.bak
 **/*.log
 **/*.tmp
-
+**/*.vs
 
 # Fser files
 *.user
