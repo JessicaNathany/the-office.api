@@ -2,7 +2,7 @@
 
 namespace the_office.domain.Domain
 {
-    public sealed class Season : Entity
+    public class Season : Entity
     {
         /// <summary>
         /// Description of the Season

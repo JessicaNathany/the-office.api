@@ -2,7 +2,7 @@
 
 namespace the_office.domain.Domain
 {
-    public sealed class Character : Entity
+    public class Character : Entity
     {
         /// <summary>
         /// Name of the Character
