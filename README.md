@@ -94,6 +94,9 @@ be added in future updates.<br/>
 - [Newtonsoft](https://www.nuget.org/packages/Newtonsoft.Json)
 - [MediatR](https://www.nuget.org/packages/MediatR)
 - [FluentValidation](https://www.nuget.org/packages/fluentvalidation/)
+- [EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/8.0.0-preview.3.23174.2)
+- [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL/8.0.0-preview.3)
+- [Npgsql.EntityFrameworkCore.PostgreSQL.Design](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Design/2.0.0-preview1)
 <br/><br/>
 
 
