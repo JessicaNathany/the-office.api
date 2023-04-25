@@ -72,16 +72,16 @@ Para começar a utilizar o API, siga estes passos: <br/>
 
 
 ## Recursos atuais :clipboard: <br/>
-- GET /characters - retrieves a list of all characters in The Office.
-- GET /characters/{id} - retrieves a specific character by ID.
-- GET /episodes - retrieves a list of all episodes in The Office.
-- GET /episodes/{id} - retrieves a specific episode by ID.
-- GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office
+- GET /characters - retorna uma lista de personagens do The Office.
+- GET /characters/{id} - obtém personagens por ID.
+- GET /episodes - retorna uam lista de episódios do The Office.
+- GET /episodes/{id} - retorna um episódio específico por ID.
+- GET /quotes/characters/{id} - retorna frases específicas por id do ator do The Office
 
 ## Próximos recursos :dart: <br/>
-- GET /gifs - retrieves a list of all gifs in The Office.
-- GET /images - retrieves a list of all iamges in The Office.
-- GET /images/character/{id} - retrieves of all iamges in specific character in The Office. <br/>
+- GET /gifs - retornar uma lista de Gifs do Office.
+- GET /images - retornar todas as imagens do The Office.
+- GET /images/character/{id} - retornar imagens do personagem do The Office. <br/>
 
 
 Status do projeto
