@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 
-builder.Services.AddDbContext<TheOfficeContext>(options =>
+builder.Services.AddDbContext<TheOfficedbContext>(options =>
 {
     options.UseNpgsql(builder.Configuration.GetConnectionString("TheOfficeConnectionString"));
 });
