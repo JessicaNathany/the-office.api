@@ -1,7 +1,7 @@
-﻿using the_office.insfrastructure.Data.Repository;
-using the_office.insfrastructure.Data.Repository.Interface;
+﻿using the_office.insfrastructure.Repository;
+using the_office.insfrastructure.Repository.Interface;
 
-namespace the_office.api.Configuration
+namespace the_office.api.Configurations
 {
     public static class DependencyInjectionRegistry
     {

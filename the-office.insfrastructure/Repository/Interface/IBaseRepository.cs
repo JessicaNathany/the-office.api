@@ -1,6 +1,6 @@
 ﻿using the_office.domain.Model;
 
-namespace the_office.insfrastructure.Data.Repository.Interface
+namespace the_office.insfrastructure.Repository.Interface
 {
     public interface IBaseRepository<TEntity> : IDisposable where TEntity : Entity
     {

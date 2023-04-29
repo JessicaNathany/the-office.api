@@ -1,7 +1,7 @@
 ﻿using the_office.api.application.Request;
 using the_office.api.application.Response;
-using the_office.insfrastructure.Data.Repository.Interface;
 using the_office.insfrastructure.Mediator.Message;
+using the_office.insfrastructure.Repository.Interface;
 
 namespace the_office.api.application.Handlers.Characters
 {

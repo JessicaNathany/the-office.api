@@ -1,7 +1,7 @@
 ﻿using the_office.domain.Model;
-using the_office.insfrastructure.Data.Repository.Interface;
+using the_office.insfrastructure.Repository.Interface;
 
-namespace the_office.insfrastructure.Data.Repository
+namespace the_office.insfrastructure.Repository
 {
     public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : Entity, new()
     {
