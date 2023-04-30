@@ -1,6 +1,7 @@
 # Compile config
 bin/
 obj/
+appsettings.json
 
 # NuGet package restore
 **/packages/
@@ -16,3 +17,7 @@ obj/
 *.user
 *.suo
 *.userprefs
+/src/the-office.api/appsettings.json
+/src/the-office.api/appsettings.Development.json
+/src/the-office.api/appsettings.Development.json
+/src/the-office.api/appsettings.json
