@@ -20,7 +20,7 @@ namespace the_office.insfrastructure.Mappings
 
             builder.Property(b => b.Status)
                .IsRequired()
-               .HasColumnType("bit");
+               .HasColumnType("bool");
 
             builder.Property(b => b.Gender)
                .IsRequired()
@@ -34,7 +34,7 @@ namespace the_office.insfrastructure.Mappings
                .IsRequired()
                .HasColumnType("varchar(Max)");
 
-            //continua mapeamento
+            builder.ToTable("Character");
         }
     }
 }

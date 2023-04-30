@@ -10,7 +10,15 @@ namespace the_office.insfrastructure.Mappings
         {
             builder.HasKey(ec => ec.Id);
 
-            // continua
+            builder.HasOne(ep => ep.Episode)
+                .WithMany(et => et.Characters)
+                .HasForeignKey(e => e.IdEpisode);
+
+            builder.HasOne(ep => ep.Character)
+                .WithMany(et => et.Episodes)
+                .HasForeignKey(e => e.IdCharacter);
+
+            builder.ToTable("EpisodeCharacter");
         }
     }
 }

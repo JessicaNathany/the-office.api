@@ -2,6 +2,8 @@
 
 namespace the_office.api.Controllers
 {
+    [ApiController]
+    [Route("episode")]
     public class EpisodesController : Controller
     {
         public ActionResult Index()

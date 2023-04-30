@@ -1,5 +1,4 @@
-﻿using Newtonsoft.Json;
-using the_office.domain.Model;
+﻿using the_office.domain.Model;
 
 namespace the_office.domain.Domain
 {
@@ -13,7 +12,6 @@ namespace the_office.domain.Domain
         /// <summary>
         /// When this Episode aired 
         /// </summary>
-        [JsonProperty("air_date")]
         public string AirDate { get; set; }
 
         /// <summary>

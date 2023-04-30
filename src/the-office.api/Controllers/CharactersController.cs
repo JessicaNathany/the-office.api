@@ -3,7 +3,7 @@
 namespace the_office.api.Controllers
 {
     [ApiController]
-    [Route("the-office")]
+    [Route("character")]
     public class CharactersController : Controller
     {
         public ActionResult Index()

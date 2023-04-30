@@ -2,6 +2,8 @@
 
 namespace the_office.api.Controllers
 {
+    [ApiController]
+    [Route("phrase")]
     public class PhrasesController : Controller
     {
         // GET: QuotesController
