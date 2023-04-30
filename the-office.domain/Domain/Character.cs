@@ -17,7 +17,7 @@ namespace the_office.domain.Domain
         /// <summary>
         /// The status of this character, whether they be living, dead, or unknown
         /// </summary>
-        public string Status { get; set; }
+        public bool Status { get; set; }
 
         /// <summary>
         /// The gender of this character, whether they be Female, Male, Genderless, or Unknown
@@ -30,8 +30,13 @@ namespace the_office.domain.Domain
         public string ImageUrl { get; set; }
 
         /// <summary>
+        /// this is the character's profession
+        /// </summary>
+        public string Job { get; set; }
+
+        /// <summary>
         /// The episodes this character stars in
         /// </summary>
-        public List<Episode> Episodes { get; set; }
+        public IEnumerable<EpisodeCharacter> Episodes { get; set; }
     }
 }

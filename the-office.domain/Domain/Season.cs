@@ -13,5 +13,10 @@ namespace the_office.domain.Domain
         /// List episodes of the Seeason
         /// </summary>
         public List<Episode> Episodes { get; set; }
+
+        /// <summary>
+        /// List characters of the Seeason
+        /// </summary>
+        public List<Character> Characters { get; set; }
     }
 }

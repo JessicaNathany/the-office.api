@@ -24,15 +24,15 @@ namespace the_office.domain.Domain
         /// <summary>
         /// The characters seen in this episode.
         /// </summary>
-        public string[] Characters { get; set; }
+        public IEnumerable<EpisodeCharacter> Characters { get; set; }
 
-        /// <summary>
+         /// <summary>
         /// Id the Season episode.
         /// </summary>
         public int SeasonId { get; set; }
 
         /// <summary>
-        /// Object Season 
+        /// The season seen in this episode.
         /// </summary>
         public Season Season { get; set; }
     }

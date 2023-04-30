@@ -1,10 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.Extensions.Configuration;
 using the_office.domain.Domain;
 
 namespace the_office.insfrastructure.Context
 {
     public class TheOfficedbContext : DbContext
     {
+          public IConfiguration Configuration { get; }
+
         public TheOfficedbContext(DbContextOptions<TheOfficedbContext> options) 
             : base(options)
         { }
@@ -17,5 +21,24 @@ namespace the_office.insfrastructure.Context
 
         public DbSet<Season> Seasons { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(TheOfficedbContext).Assembly);
+
+            foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
+
+            base.OnModelCreating(modelBuilder);
+        }
+    }
+
+    public class TheOfficedbContextFactory : IDesignTimeDbContextFactory<TheOfficedbContext>
+    {
+        public TheOfficedbContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<TheOfficedbContext>();
+            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("TheOfficeConnectionString"));
+
+            return new TheOfficedbContext(optionsBuilder.Options);
+        }
     }
 }
