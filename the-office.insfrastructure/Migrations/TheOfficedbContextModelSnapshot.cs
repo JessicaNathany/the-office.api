@@ -39,7 +39,7 @@ namespace the_office.insfrastructure.Migrations
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("varchar(Max)");
+                        .HasColumnType("varchar(500)");
 
                     b.Property<string>("Job")
                         .IsRequired()
@@ -57,7 +57,7 @@ namespace the_office.insfrastructure.Migrations
                         .HasColumnType("integer");
 
                     b.Property<bool>("Status")
-                        .HasColumnType("bool");
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
@@ -83,7 +83,7 @@ namespace the_office.insfrastructure.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("Description(100)");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -120,30 +120,6 @@ namespace the_office.insfrastructure.Migrations
                     b.HasIndex("IdEpisode");
 
                     b.ToTable("EpisodeCharacter", (string)null);
-                });
-
-            modelBuilder.Entity("the_office.domain.Domain.Phrases", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("integer");
-
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Character")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<Guid>("Code")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Phrase")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Phrases");
                 });
 
             modelBuilder.Entity("the_office.domain.Domain.Season", b =>

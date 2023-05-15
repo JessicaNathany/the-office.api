@@ -20,7 +20,7 @@ namespace the_office.insfrastructure.Mappings
 
             builder.Property(b => b.Description)
                .IsRequired()
-               .HasColumnType("Description(100)");
+               .HasColumnType("varchar(100)");
 
             builder.Property(b => b.SeasonId)
                .IsRequired()

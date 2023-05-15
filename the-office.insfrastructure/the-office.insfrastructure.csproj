@@ -8,6 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Migrations\" />
     <Folder Include="Request\" />
     <Folder Include="Request\" />
   </ItemGroup>

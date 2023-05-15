@@ -3,13 +3,20 @@ using the_office.api.Configurations;
 using the_office.insfrastructure.Context;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Configuration.AddJsonFile("appsettings.json");
 
 builder.Services.AddControllers();
 
+var connectionString = builder.Configuration.GetConnectionString("TheOfficeConnectionString");
+
 builder.Services.AddDbContext<TheOfficedbContext>(options =>
 {
-    options.UseNpgsql(builder.Configuration.GetConnectionString("TheOfficeConnectionString"));
+    options.UseNpgsql(connectionString);
 });
+
+//var config = builder.Configuration;
+//builder.Services.Configure <[Sua_Classe] > (config);
+//var settings = config.Get <[Sua_Classe] > ();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

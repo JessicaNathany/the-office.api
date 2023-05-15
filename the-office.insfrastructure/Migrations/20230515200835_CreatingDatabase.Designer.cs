@@ -12,8 +12,8 @@ using the_office.insfrastructure.Context;
 namespace the_office.insfrastructure.Migrations
 {
     [DbContext(typeof(TheOfficedbContext))]
-    [Migration("20230429232146_CreateInitialPostgreSQLMigrations")]
-    partial class CreateInitialPostgreSQLMigrations
+    [Migration("20230515200835_CreatingDatabase")]
+    partial class CreatingDatabase
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -38,27 +38,35 @@ namespace the_office.insfrastructure.Migrations
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(500)");
+
+                    b.Property<string>("Job")
+                        .IsRequired()
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("NameActor")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(50)");
 
-                    b.Property<string>("Status")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int?>("SeasonId")
+                        .HasColumnType("integer");
+
+                    b.Property<bool>("Status")
+                        .HasColumnType("boolean");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Characters");
+                    b.HasIndex("SeasonId");
+
+                    b.ToTable("Character", (string)null);
                 });
 
             modelBuilder.Entity("the_office.domain.Domain.Episode", b =>
@@ -71,39 +79,30 @@ namespace the_office.insfrastructure.Migrations
 
                     b.Property<string>("AirDate")
                         .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int?>("CharacterId")
-                        .HasColumnType("integer");
-
-                    b.Property<string[]>("Characters")
-                        .IsRequired()
-                        .HasColumnType("text[]");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<Guid>("Code")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("text");
+                        .HasColumnType("varchar(50)");
 
                     b.Property<int>("SeasonId")
-                        .HasColumnType("integer");
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CharacterId");
-
                     b.HasIndex("SeasonId");
 
-                    b.ToTable("Episodes");
+                    b.ToTable("Episode", (string)null);
                 });
 
-            modelBuilder.Entity("the_office.domain.Domain.Phrases", b =>
+            modelBuilder.Entity("the_office.domain.Domain.EpisodeCharacter", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -111,20 +110,19 @@ namespace the_office.insfrastructure.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Character")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("IdCharacter")
+                        .HasColumnType("integer");
 
-                    b.Property<Guid>("Code")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Phrase")
-                        .IsRequired()
-                        .HasColumnType("text");
+                    b.Property<int>("IdEpisode")
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Phrases");
+                    b.HasIndex("IdCharacter");
+
+                    b.HasIndex("IdEpisode");
+
+                    b.ToTable("EpisodeCharacter", (string)null);
                 });
 
             modelBuilder.Entity("the_office.domain.Domain.Season", b =>
@@ -138,20 +136,24 @@ namespace the_office.insfrastructure.Migrations
                     b.Property<Guid>("Code")
                         .HasColumnType("uuid");
 
-                    b.Property<int>("Description")
-                        .HasColumnType("integer");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("varchar(100)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Seasons");
+                    b.ToTable("Season", (string)null);
+                });
+
+            modelBuilder.Entity("the_office.domain.Domain.Character", b =>
+                {
+                    b.HasOne("the_office.domain.Domain.Season", null)
+                        .WithMany("Characters")
+                        .HasForeignKey("SeasonId");
                 });
 
             modelBuilder.Entity("the_office.domain.Domain.Episode", b =>
                 {
-                    b.HasOne("the_office.domain.Domain.Character", null)
-                        .WithMany("Episodes")
-                        .HasForeignKey("CharacterId");
-
                     b.HasOne("the_office.domain.Domain.Season", "Season")
                         .WithMany("Episodes")
                         .HasForeignKey("SeasonId")
@@ -160,13 +162,37 @@ namespace the_office.insfrastructure.Migrations
                     b.Navigation("Season");
                 });
 
+            modelBuilder.Entity("the_office.domain.Domain.EpisodeCharacter", b =>
+                {
+                    b.HasOne("the_office.domain.Domain.Character", "Character")
+                        .WithMany("Episodes")
+                        .HasForeignKey("IdCharacter")
+                        .IsRequired();
+
+                    b.HasOne("the_office.domain.Domain.Episode", "Episode")
+                        .WithMany("Characters")
+                        .HasForeignKey("IdEpisode")
+                        .IsRequired();
+
+                    b.Navigation("Character");
+
+                    b.Navigation("Episode");
+                });
+
             modelBuilder.Entity("the_office.domain.Domain.Character", b =>
                 {
                     b.Navigation("Episodes");
                 });
 
+            modelBuilder.Entity("the_office.domain.Domain.Episode", b =>
+                {
+                    b.Navigation("Characters");
+                });
+
             modelBuilder.Entity("the_office.domain.Domain.Season", b =>
                 {
+                    b.Navigation("Characters");
+
                     b.Navigation("Episodes");
                 });
 #pragma warning restore 612, 618

@@ -4,12 +4,13 @@ namespace the_office.api.Controllers
 {
     [ApiController]
     [Route("phrase")]
-    public class PhrasesController : Controller
+    public class PhrasesController : ControllerBase
     {
-        // GET: QuotesController
+        [HttpGet]
+        [Route("GetAll")]
         public ActionResult Index()
         {
-            return View();
+            throw new NotImplementedException();    
         }
     }
 }

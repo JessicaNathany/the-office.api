@@ -4,11 +4,13 @@ namespace the_office.api.Controllers
 {
     [ApiController]
     [Route("episode")]
-    public class EpisodesController : Controller
+    public class EpisodesController : ControllerBase
     {
+        [HttpGet]
+        [Route("GetAll")]
         public ActionResult Index()
         {
-            return View();
+            throw new NotImplementedException();
         }
     }
 }

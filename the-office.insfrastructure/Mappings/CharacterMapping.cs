@@ -20,7 +20,7 @@ namespace the_office.insfrastructure.Mappings
 
             builder.Property(b => b.Status)
                .IsRequired()
-               .HasColumnType("bool");
+               .HasColumnType("boolean");
 
             builder.Property(b => b.Gender)
                .IsRequired()
@@ -32,7 +32,7 @@ namespace the_office.insfrastructure.Mappings
 
             builder.Property(b => b.ImageUrl)
                .IsRequired()
-               .HasColumnType("varchar(Max)");
+               .HasColumnType("varchar(500)");
 
             builder.ToTable("Character");
         }

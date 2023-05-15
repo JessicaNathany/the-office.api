@@ -17,7 +17,7 @@ namespace the_office.insfrastructure.Context
 
         public DbSet<Episode> Episodes { get; set; }
 
-        public DbSet<Phrases> Phrases { get; set; }
+        //public DbSet<Phrases> Phrases { get; set; }
 
         public DbSet<Season> Seasons { get; set; }
 
@@ -26,19 +26,7 @@ namespace the_office.insfrastructure.Context
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(TheOfficedbContext).Assembly);
 
             foreach (var relationship in modelBuilder.Model.GetEntityTypes().SelectMany(e => e.GetForeignKeys())) relationship.DeleteBehavior = DeleteBehavior.ClientSetNull;
-
             base.OnModelCreating(modelBuilder);
-        }
-    }
-
-    public class TheOfficedbContextFactory : IDesignTimeDbContextFactory<TheOfficedbContext>
-    {
-        public TheOfficedbContext CreateDbContext(string[] args)
-        {
-            var optionsBuilder = new DbContextOptionsBuilder<TheOfficedbContext>();
-            optionsBuilder.UseNpgsql(Environment.GetEnvironmentVariable("TheOfficeConnectionString"));
-
-            return new TheOfficedbContext(optionsBuilder.Options);
         }
     }
 }

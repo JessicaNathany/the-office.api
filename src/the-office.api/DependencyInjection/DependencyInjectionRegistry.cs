@@ -9,7 +9,7 @@ namespace the_office.api.Configurations
         {
             services.AddScoped<ICharacterRepository, CharacterRepository>();
             services.AddScoped<IEpisodeRepository, EpisodeRepository>();
-            services.AddScoped<IPhrasesRepository, PhrasesRepository>();
+            //services.AddScoped<IPhrasesRepository, PhrasesRepository>();
             services.AddScoped<ISeasonRepository, SeasonRepository>();
         }
     }

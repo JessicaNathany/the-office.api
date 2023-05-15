@@ -4,11 +4,13 @@ namespace the_office.api.Controllers
 {
     [ApiController]
     [Route("character")]
-    public class CharactersController : Controller
+    public class CharactersController : ControllerBase
     {
+        [HttpGet]
+        [Route("GetAll")]
         public ActionResult Index()
         {
-            return View();
+            throw new NotImplementedException();
         }
     }
 }
