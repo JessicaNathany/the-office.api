@@ -1,5 +1,5 @@
 ﻿using the_office.domain.Domain;
-using the_office.insfrastructure.Repository.Interface;
+using the_office.domain.Interface;
 
 namespace the_office.insfrastructure.Repository
 {
