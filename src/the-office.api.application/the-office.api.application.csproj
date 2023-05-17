@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <RootNamespace>the_office.api.application</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\the-office.infrastructure\the-office.infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Characters\Requests\Validations\" />
+    <Folder Include="Common\Behaviours\" />
+    <Folder Include="Common\Helpers\" />
+    <Folder Include="Common\Mappings\" />
+    <Folder Include="Episodes\Requests\Validations\" />
+  </ItemGroup>
+
+</Project>
