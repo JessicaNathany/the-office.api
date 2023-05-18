@@ -28,11 +28,11 @@ Abra o navegador em http://localhost:5000/swagger.
 Isto exibirá a interface de usuário Swagger, que fornece uma interface amigável para explorar a API 
 pontos finais. A API fornece os seguintes pontos finais:<br/>
 
-- GET /characters - retrieves a list of all characters in The Office.
-- GET /characters/{id} - retrieves a specific character by ID.
-- GET /episodes - retrieves a list of all episodes in The Office.
-- GET /episodes/{id} - retrieves a specific episode by ID.
-- GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office.<br/><br/>
+- `GET /characters` - retrieves a list of all characters in The Office.
+- `GET /characters/{id}` - retrieves a specific character by ID.
+- `GET /episodes` - retrieves a list of all episodes in The Office.
+- `GET /episodes/{id}` - retrieves a specific episode by ID.
+- `GET /quotes/characters/{id}` - retrieves a list of all better frases for specific character in The Office.<br/><br/>
 
 
 1. **Presentation Layer**
@@ -50,6 +50,11 @@ pontos finais. A API fornece os seguintes pontos finais:<br/>
   - Nome: the-office.domain<br/>
   - Descrição: A aplicação é responsável pela definição dos conceitos e regras comerciais da aplicação. <br/>
     É nesta camada que são definidas as entidades e os valores dos objetos que a aplicação utiliza.<br/>
+    
+4. **Infrastructure Layer**
+  - Name: the-office.infrastructure<br/>
+  - Description: Esta camada é responsável pelo acesso a dados. <br/>
+    Nesta camada contém configurações de conexões de banco, Migrations, Mappings, Repositories e configurações do MediatR.<br/>
     
   ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/66dd6d79-bab2-4565-a6bf-8a179041ce67)
 
