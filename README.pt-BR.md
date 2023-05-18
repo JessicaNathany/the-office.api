@@ -62,7 +62,7 @@ Para começar a utilizar o API, siga estes passos: <br/>
 
 ## Instalação :wrench: <br/>
 
-1. Instale o .NET 6 se você ainda não o fez. Você pode baixá-lo [here](https://dotnet.microsoft.com/download/dotnet/6.0).
+1. Install .NET 7 if you haven't already. You can download it from [here](https://dotnet.microsoft.com/pt-br/download/dotnet/7.0).
 2. Clone o  repositório para sua máquina local.`https://github.com/JessicaNathany/the-office.api.git`
 3. Próximo, navegue até o diretório do projeto e execute o seguinte comando para restaurar as dependências:
 `dotnet restore`
