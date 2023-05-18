@@ -29,10 +29,10 @@ This will display the Swagger UI, which provides a user-friendly interface for e
 endpoints. The API provides the following endpoints:<br/>
 
 - `GET /characters` - retrieves a list of all characters in The Office.
-- GET /characters/{id} - retrieves a specific character by ID.
-- GET /episodes - retrieves a list of all episodes in The Office.
-- GET /episodes/{id} - retrieves a specific episode by ID.
-- GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office.<br/><br/>
+- `GET /characters/{id}` - retrieves a specific character by ID.
+- `GET /episodes` - retrieves a list of all episodes in The Office.
+- `GET /episodes/{id}` - retrieves a specific episode by ID.
+- `GET /quotes/characters/{id}` - retrieves a list of all better frases for specific character in The Office.<br/><br/>
 
 
 1. **Presentation Layer**
@@ -42,14 +42,19 @@ endpoints. The API provides the following endpoints:<br/>
     
 2. **Application Layer**
   - Name: the-office.application<br/>
-  - Description: The application layer is responsible for housing the application's business rules, <br/>
+  - Description: The layer is responsible for housing the application's business rules, <br/>
     it uses the services provided by the other layers to perform the required operations. It is in this layer <br/>
     that the application use cases are implemented. <br/>
     
 3. **Domain Layer**
   - Name: the-office.domain<br/>
-  - Description: The application is responsible for defining the application's business concepts and rules. <br/>
+  - Description: The layer is responsible for defining the application's business concepts and rules. <br/>
     It is in this layer that the entities and object values that the application uses are defined.<br/>
+    
+4. **Infrastructure Layer**
+  - Name: the-office.infrastructure<br/>
+  - Description: The layer is responsible for access database. <br/>
+    It is in this layer that the configuration database, context class, migrations, repositories and configuration the MediatR.<br/>
     
  ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/a2f735b4-d2d0-4d7c-9aa5-74eeedef3f21)
 
