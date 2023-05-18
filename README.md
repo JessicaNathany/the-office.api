@@ -28,7 +28,7 @@ Open a web browser and navigate to http://localhost:5000/swagger.
 This will display the Swagger UI, which provides a user-friendly interface for exploring the API 
 endpoints. The API provides the following endpoints:<br/>
 
-- GET /characters - retrieves a list of all characters in The Office.
+- `GET /characters` - retrieves a list of all characters in The Office.
 - GET /characters/{id} - retrieves a specific character by ID.
 - GET /episodes - retrieves a list of all episodes in The Office.
 - GET /episodes/{id} - retrieves a specific episode by ID.
