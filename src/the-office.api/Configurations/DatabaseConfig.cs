@@ -1,6 +1,6 @@
 using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using the_office.infrastructure.Data;
+using the_office.infrastructure.Data.Context;
 
 namespace the_office.api.Configurations;
 

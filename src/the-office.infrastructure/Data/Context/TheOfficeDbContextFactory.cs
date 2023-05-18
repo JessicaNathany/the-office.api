@@ -2,23 +2,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Microsoft.Extensions.Configuration;
 
-namespace the_office.infrastructure.Data;
+namespace the_office.infrastructure.Data.Context;
 
-public class TheOfficeDbContextFactory: IDesignTimeDbContextFactory<TheOfficeDbContext>
+public class TheOfficeDbContextFactory : IDesignTimeDbContextFactory<TheOfficeDbContext>
 {
     public TheOfficeDbContext CreateDbContext(string[] args)
     {
         var configuration = GetConfiguration();
 
         var builder = new DbContextOptionsBuilder<TheOfficeDbContext>();
- 
+
         var connectionString = configuration.GetConnectionString(nameof(TheOfficeDbContext));
- 
+
         builder.UseNpgsql(connectionString);
- 
+
         return new TheOfficeDbContext(builder.Options);
     }
-    
+
     private static IConfigurationRoot GetConfiguration()
     {
         var environment = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");

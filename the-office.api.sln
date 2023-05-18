@@ -3,17 +3,19 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "the-office.api", "src\the-office.api\the-office.api.csproj", "{3AC7AE3F-3D43-40C7-B30A-8A8AA7BD66C2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "the-office.api", "src\the-office.api\the-office.api.csproj", "{3AC7AE3F-3D43-40C7-B30A-8A8AA7BD66C2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{458B9D08-2CF5-4F39-B0AB-750DE562FF4A}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7AB0AE3E-D742-4B81-987D-09F754317FEF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "the-office.api.application", "src\the-office.api.application\the-office.api.application.csproj", "{A790ECB8-5BB0-4BBA-899C-CD4ECFE62407}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "the-office.api.application", "src\the-office.api.application\the-office.api.application.csproj", "{A790ECB8-5BB0-4BBA-899C-CD4ECFE62407}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "the-office.domain", "src\the-office.domain\the-office.domain.csproj", "{F00A6FA3-6362-4369-B535-6B0F3F6AEF1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "the-office.domain", "src\the-office.domain\the-office.domain.csproj", "{F00A6FA3-6362-4369-B535-6B0F3F6AEF1C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "the-office.infrastructure", "src\the-office.infrastructure\the-office.infrastructure.csproj", "{DF325CB8-9196-4295-99F4-50D2EE9E0AAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "the-office.infrastructure", "src\the-office.infrastructure\the-office.infrastructure.csproj", "{DF325CB8-9196-4295-99F4-50D2EE9E0AAA}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{E688752F-D69E-4714-B9E8-B9779957ABCA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "the-office.api.test", "the-office.api.test\the-office.api.test.csproj", "{AAB5BB01-FF0E-4ED5-9A10-BA27920754D1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{DF325CB8-9196-4295-99F4-50D2EE9E0AAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF325CB8-9196-4295-99F4-50D2EE9E0AAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF325CB8-9196-4295-99F4-50D2EE9E0AAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAB5BB01-FF0E-4ED5-9A10-BA27920754D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAB5BB01-FF0E-4ED5-9A10-BA27920754D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAB5BB01-FF0E-4ED5-9A10-BA27920754D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAB5BB01-FF0E-4ED5-9A10-BA27920754D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{A790ECB8-5BB0-4BBA-899C-CD4ECFE62407} = {458B9D08-2CF5-4F39-B0AB-750DE562FF4A}
 		{F00A6FA3-6362-4369-B535-6B0F3F6AEF1C} = {458B9D08-2CF5-4F39-B0AB-750DE562FF4A}
 		{DF325CB8-9196-4295-99F4-50D2EE9E0AAA} = {458B9D08-2CF5-4F39-B0AB-750DE562FF4A}
+		{AAB5BB01-FF0E-4ED5-9A10-BA27920754D1} = {E688752F-D69E-4714-B9E8-B9779957ABCA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B9E60394-1A8B-4C28-91FC-787EAE0EFE76}

@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using the_office.domain.Entities;
 
-namespace the_office.infrastructure.Data
+namespace the_office.infrastructure.Data.Context
 {
     public class TheOfficeDbContext : DbContext
     {
