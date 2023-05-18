@@ -51,7 +51,8 @@ pontos finais. A API fornece os seguintes pontos finais:<br/>
   - Descrição: A aplicação é responsável pela definição dos conceitos e regras comerciais da aplicação. <br/>
     É nesta camada que são definidas as entidades e os valores dos objetos que a aplicação utiliza.<br/>
     
-  ![image](https://user-images.githubusercontent.com/11943572/233072285-dd0c4ffd-eb50-4d27-ada9-2789191fcfb4.png)
+  ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/66dd6d79-bab2-4565-a6bf-8a179041ce67)
+
 
 
 ##  Como começar 🚀<br/>
