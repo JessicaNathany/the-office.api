@@ -51,7 +51,8 @@ endpoints. The API provides the following endpoints:<br/>
   - Description: The application is responsible for defining the application's business concepts and rules. <br/>
     It is in this layer that the entities and object values that the application uses are defined.<br/>
     
- ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/516164c6-3f7a-48fb-93b8-333864789ffc)
+ ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/a2f735b4-d2d0-4d7c-9aa5-74eeedef3f21)
+
 
 
 
