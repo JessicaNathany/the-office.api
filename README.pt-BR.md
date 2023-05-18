@@ -52,8 +52,8 @@ pontos finais. A API fornece os seguintes pontos finais:<br/>
     É nesta camada que são definidas as entidades e os valores dos objetos que a aplicação utiliza.<br/>
     
 4. **Infrastructure Layer**
-  - Name: the-office.infrastructure<br/>
-  - Description: Esta camada é responsável pelo acesso a dados. <br/>
+  - Nome: the-office.infrastructure<br/>
+  - Descrição: Esta camada é responsável pelo acesso a dados. <br/>
     Nesta camada contém configurações de conexões de banco, Migrations, Mappings, Repositories e configurações do MediatR.<br/>
     
   ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/66dd6d79-bab2-4565-a6bf-8a179041ce67)
