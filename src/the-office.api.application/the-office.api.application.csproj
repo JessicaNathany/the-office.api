@@ -23,4 +23,10 @@
     <ProjectReference Include="..\the-office.infrastructure\the-office.infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Phrases\Handler\" />
+    <Folder Include="Phrases\Responses\" />
+    <Folder Include="Phrases\Requests\" />
+  </ItemGroup>
+
 </Project>
