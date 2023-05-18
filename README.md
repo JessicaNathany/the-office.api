@@ -28,7 +28,7 @@ Open a web browser and navigate to http://localhost:5000/swagger.
 This will display the Swagger UI, which provides a user-friendly interface for exploring the API 
 endpoints. The API provides the following endpoints:<br/>
 
-- GET /characters - retrieves a list of all characters in The Office.
+- `GET /characters` - retrieves a list of all characters in The Office.
 - GET /characters/{id} - retrieves a specific character by ID.
 - GET /episodes - retrieves a list of all episodes in The Office.
 - GET /episodes/{id} - retrieves a specific episode by ID.
@@ -51,7 +51,9 @@ endpoints. The API provides the following endpoints:<br/>
   - Description: The application is responsible for defining the application's business concepts and rules. <br/>
     It is in this layer that the entities and object values that the application uses are defined.<br/>
     
-  ![image](https://user-images.githubusercontent.com/11943572/233205631-8d424086-ba08-4d33-8836-3af0bde2e909.png)
+ ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/a2f735b4-d2d0-4d7c-9aa5-74eeedef3f21)
+
+
 
 
 ##  Getting Started 🚀<br/>
