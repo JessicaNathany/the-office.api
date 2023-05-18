@@ -8,15 +8,19 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\the-office.infrastructure\the-office.infrastructure.csproj" />
+    <Compile Remove="Characters\Requests\Validations\**" />
+    <Compile Remove="Common\**" />
+    <Compile Remove="Episodes\Requests\Validations\**" />
+    <EmbeddedResource Remove="Characters\Requests\Validations\**" />
+    <EmbeddedResource Remove="Common\**" />
+    <EmbeddedResource Remove="Episodes\Requests\Validations\**" />
+    <None Remove="Characters\Requests\Validations\**" />
+    <None Remove="Common\**" />
+    <None Remove="Episodes\Requests\Validations\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Characters\Requests\Validations\" />
-    <Folder Include="Common\Behaviours\" />
-    <Folder Include="Common\Helpers\" />
-    <Folder Include="Common\Mappings\" />
-    <Folder Include="Episodes\Requests\Validations\" />
+    <ProjectReference Include="..\the-office.infrastructure\the-office.infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

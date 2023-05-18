@@ -8,17 +8,6 @@ builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
 builder.Services.AddControllers();
 
-// var connectionString = builder.Configuration.GetConnectionString("TheOfficeConnectionString");
-//
-// builder.Services.AddDbContext<TheOfficeDbContext>(options =>
-// {
-//     options.UseNpgsql(connectionString);
-// });
-
-//var config = builder.Configuration;
-//builder.Services.Configure <[Sua_Classe] > (config);
-//var settings = config.Get <[Sua_Classe] > ();
-
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.ResolveDependencies();
