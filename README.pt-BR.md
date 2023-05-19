@@ -17,7 +17,7 @@
 	🚧  Project 🚀 em construção...  🚧
  </h4>
 
-Este é um .NET 6 Web API que fornece pontos finais para acessar e gerenciar dados relacionados ao programa de TV The Office.<br/>
+Este é um .NET 7 Web API que fornece pontos finais para acessar e gerenciar dados relacionados ao programa de TV The Office.<br/>
 A API permite que os usuários recuperem informações sobre personagens, episódios e citações do programa.<br/><br/>
 
 
@@ -94,12 +94,17 @@ Status do projeto
 Este projeto está atualmente na versão 1.0.0. Abaixo está uma lista das características atualmente disponíveis<br/> e aquelas que irão
 ser adicionado em futuras atualizações.<br/>
 
- ## Bibliotecas e pacotes 🛠️
+ 
+ ## Libraries and Backages 🛠️
 - [Moq](https://www.nuget.org/packages/Moq)
 - [AutoMoq](https://www.nuget.org/packages/AutoMoq)
 - [Newtonsoft](https://www.nuget.org/packages/Newtonsoft.Json)
 - [MediatR](https://www.nuget.org/packages/MediatR)
 - [FluentValidation](https://www.nuget.org/packages/fluentvalidation/)
+- [EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/8.0.0-preview.3.23174.2)
+- [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL/8.0.0-preview.3)
+- [Npgsql.EntityFrameworkCore.PostgreSQL.Design](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Design/2.0.0-preview1)
+- [AutoMapper](https://www.nuget.org/packages/automapper/)
 <br/><br/>
 
 🤝 Contribuições
