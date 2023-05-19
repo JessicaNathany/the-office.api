@@ -18,7 +18,7 @@
 	🚧  Project 🚀 under construction...  🚧
  </h4>
 
-This is a .NET 6 Web API that provides endpoints to access and manage data related to the TV show The Office. <br/>
+This is a .NET 7 Web API that provides endpoints to access and manage data related to the TV show The Office. <br/>
 The API allows users to retrieve information about characters, episodes, and quotes from the show. <br/><br/>
 
 ## API Documentation 📝 <br/>
