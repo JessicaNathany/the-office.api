@@ -105,6 +105,7 @@ be added in future updates.<br/>
 - [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL/8.0.0-preview.3)
 - [Npgsql.EntityFrameworkCore.PostgreSQL.Design](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Design/2.0.0-preview1)
 - [AutoMapper](https://www.nuget.org/packages/automapper/)
+- [NBuilder](https://www.nuget.org/packages/NBuilder)
 <br/><br/>
 
 
