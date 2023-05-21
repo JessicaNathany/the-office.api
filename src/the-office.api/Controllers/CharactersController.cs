@@ -40,6 +40,5 @@ namespace the_office.api.Controllers
 
             return Ok(response);
         }
-
     }
 }
