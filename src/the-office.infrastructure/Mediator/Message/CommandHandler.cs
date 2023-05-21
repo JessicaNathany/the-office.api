@@ -51,14 +51,16 @@ namespace the_office.insfrastructure.Mediator.Message
             _validationResult.Errors.Add(validationFailure);
         }
 
-        protected CommandResponse<TResult> Response()
-        {
-            return new CommandResponse<TResult>(default, _validationResult);
-        }
+        // code review
 
-        protected CommandResponse<TResult> Response(TResult result)
-        {
-            return new CommandResponse<TResult>(result, _validationResult);
-        }
+        //protected CommandResponse<TResult> Response()
+        //{
+        //    return new CommandResponse<TResult>(default, _validationResult);
+        //}
+
+        //protected CommandResponse<TResult> Response(TResult result)
+        //{
+        //    return new CommandResponse<TResult>(result, _validationResult);
+        //}
     }
 }
