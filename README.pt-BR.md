@@ -5,7 +5,7 @@
 
 <p align="center">
   <img src="https://img.shields.io/badge/Framework-dotnet-blue"/> 
-  <img src="https://img.shields.io/badge/Framework%20version-dotnet%206-blue"/>
+  <img src="https://img.shields.io/badge/Framework%20version-dotnet%207-blue"/> 
   <img src="https://img.shields.io/badge/Language-C%23-blue"/> 
   <img src="https://img.shields.io/badge/Status-development-green"/>  
    <img src=" https://img.shields.io/badge/Status-development-green"/>  
@@ -17,7 +17,7 @@
 	🚧  Project 🚀 em construção...  🚧
  </h4>
 
-Este é um .NET 6 Web API que fornece pontos finais para acessar e gerenciar dados relacionados ao programa de TV The Office.<br/>
+Este é um .NET 7 Web API que fornece pontos finais para acessar e gerenciar dados relacionados ao programa de TV The Office.<br/>
 A API permite que os usuários recuperem informações sobre personagens, episódios e citações do programa.<br/><br/>
 
 
@@ -28,11 +28,11 @@ Abra o navegador em http://localhost:5000/swagger.
 Isto exibirá a interface de usuário Swagger, que fornece uma interface amigável para explorar a API 
 pontos finais. A API fornece os seguintes pontos finais:<br/>
 
-- GET /characters - retrieves a list of all characters in The Office.
-- GET /characters/{id} - retrieves a specific character by ID.
-- GET /episodes - retrieves a list of all episodes in The Office.
-- GET /episodes/{id} - retrieves a specific episode by ID.
-- GET /quotes/characters/{id} - retrieves a list of all better frases for specific character in The Office.<br/><br/>
+- `GET /characters` - retrieves a list of all characters in The Office.
+- `GET /characters/{id}` - retrieves a specific character by ID.
+- `GET /episodes` - retrieves a list of all episodes in The Office.
+- `GET /episodes/{id}` - retrieves a specific episode by ID.
+- `GET /quotes/characters/{id}` - retrieves a list of all better frases for specific character in The Office.<br/><br/>
 
 
 1. **Presentation Layer**
@@ -50,6 +50,11 @@ pontos finais. A API fornece os seguintes pontos finais:<br/>
   - Nome: the-office.domain<br/>
   - Descrição: A aplicação é responsável pela definição dos conceitos e regras comerciais da aplicação. <br/>
     É nesta camada que são definidas as entidades e os valores dos objetos que a aplicação utiliza.<br/>
+    
+4. **Infrastructure Layer**
+  - Nome: the-office.infrastructure<br/>
+  - Descrição: Esta camada é responsável pelo acesso a dados. <br/>
+    Nesta camada contém configurações de conexões de banco, Migrations, Mappings, Repositories e configurações do MediatR.<br/>
     
   ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/66dd6d79-bab2-4565-a6bf-8a179041ce67)
 
@@ -73,11 +78,11 @@ Para começar a utilizar o API, siga estes passos: <br/>
 
 
 ## Recursos atuais :clipboard: <br/>
-- GET /characters - retorna uma lista de personagens do The Office.
-- GET /characters/{id} - obtém personagens por ID.
-- GET /episodes - retorna uam lista de episódios do The Office.
-- GET /episodes/{id} - retorna um episódio específico por ID.
-- GET /quotes/characters/{id} - retorna frases específicas por id do ator do The Office
+- `GET /characters` - retorna uma lista de personagens do The Office.
+- `GET /characters/{id}` - obtém personagens por ID.
+- `GET /episodes` - retorna uam lista de episódios do The Office.
+- `GET /episodes/{id}` - retorna um episódio específico por ID.
+- `GET /quotes/characters/{id}` - retorna frases específicas por id do ator do The Office
 
 ## Próximos recursos :dart: <br/>
 - GET /gifs - retornar uma lista de Gifs do Office.
@@ -89,12 +94,18 @@ Status do projeto
 Este projeto está atualmente na versão 1.0.0. Abaixo está uma lista das características atualmente disponíveis<br/> e aquelas que irão
 ser adicionado em futuras atualizações.<br/>
 
- ## Bibliotecas e pacotes 🛠️
+ 
+ ## Libraries and Backages 🛠️
 - [Moq](https://www.nuget.org/packages/Moq)
 - [AutoMoq](https://www.nuget.org/packages/AutoMoq)
 - [Newtonsoft](https://www.nuget.org/packages/Newtonsoft.Json)
 - [MediatR](https://www.nuget.org/packages/MediatR)
 - [FluentValidation](https://www.nuget.org/packages/fluentvalidation/)
+- [EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/8.0.0-preview.3.23174.2)
+- [Npgsql.EntityFrameworkCore.PostgreSQL](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL/8.0.0-preview.3)
+- [Npgsql.EntityFrameworkCore.PostgreSQL.Design](https://www.nuget.org/packages/Npgsql.EntityFrameworkCore.PostgreSQL.Design/2.0.0-preview1)
+- [AutoMapper](https://www.nuget.org/packages/automapper/)
+- [NBuilder](https://www.nuget.org/packages/NBuilder)
 <br/><br/>
 
 🤝 Contribuições
