@@ -1,6 +1,6 @@
 ﻿namespace the_office.api.application.Characters.Responses
 {
-    public class CharacterResponse
+    public class CreateCharacterResponse
     {
     }
 }

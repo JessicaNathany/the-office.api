@@ -1,4 +1,5 @@
 ﻿using FluentValidation.Results;
+using the_office.domain.Response;
 
 namespace the_office.insfrastructure.Mediator.Message
 {
@@ -7,27 +8,34 @@ namespace the_office.insfrastructure.Mediator.Message
     /// </summary>
     public class CommandResponse<TResult>
     {
-        public CommandResponse(TResult result, ValidationResult validationResult)
+        public CommandResponse(TResult result, ValidationResult validationResult, IEnumerable<ValidationResponse> validationTheOffice)
         {
             this.Result = result;
-            this.Errors = validationResult == null ? Array.Empty<ValidationFailure>() : validationResult.Errors.ToArray();
+            this.Errors = validationResult == null ?
+                Array.Empty<ValidationFailure>() : 
+                validationResult.Errors.ToArray();
+
+            this.ErrorsTheOffice = validationResult is null ?
+                Array.Empty<ValidationResponse>() :
+                validationTheOffice.ToArray();
         }
 
         /// <summary>
         /// Get errors list validation
         /// </summary>
         public IEnumerable<ValidationFailure> Errors { get; private set; }
-        
+
         /// <summary>
         /// Gets an indicate valor if the command is valid
         /// </summary>
-        public bool Valid =>  Errors.Any();
+        public bool IsValid => !Errors.Any();
 
         /// <summary>
         /// Gets the result byd the command
         /// </summary>
         public TResult Result { get; private set; }
 
+        public IEnumerable<ValidationResponse> ErrorsTheOffice { get; private set; }
 
         /// <summary>
         /// The method return the default status validation
@@ -47,6 +55,11 @@ namespace the_office.insfrastructure.Mediator.Message
                 return Convert.ToInt32(stringCode.ToString().Substring(0, 3));
 
             return stringCode;
+        }
+
+        public IEnumerable<ValidationResponse> ErrosFormatTheOffice()
+        {
+            return ErrorsTheOffice;
         }
     }
 }

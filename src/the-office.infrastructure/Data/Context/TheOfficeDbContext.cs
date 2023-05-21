@@ -17,7 +17,7 @@ namespace the_office.infrastructure.Data.Context
 
         public DbSet<Episode> Episodes { get; set; }
 
-        //public DbSet<Phrases> Phrases { get; set; }
+        public DbSet<Phrases> Phrases { get; set; }
 
         public DbSet<Season> Seasons { get; set; }
 

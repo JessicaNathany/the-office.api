@@ -5,7 +5,7 @@ using the_office.insfrastructure.Mediator.Message;
 
 namespace the_office.api.application.Characters.Handlers
 {
-    public class CharacterHandler : CommandHandler<CharacterRequest, List<CharacterResponse>>
+    public class CharacterHandler : CommandHandler<CreateCharacterRequest, List<CreateCharacterResponse>>
     {
         private readonly ICharacterRepository _characterRepository;
 
@@ -13,7 +13,7 @@ namespace the_office.api.application.Characters.Handlers
         {
             _characterRepository= characterRepository;  
         }
-        public override Task<CommandResponse<List<CharacterResponse>>> Handle(CharacterRequest request, CancellationToken cancellationToken)
+        public override Task<CommandResponse<List<CreateCharacterResponse>>> Handle(CreateCharacterRequest request, CancellationToken cancellationToken)
         {
             throw new NotImplementedException();
         }

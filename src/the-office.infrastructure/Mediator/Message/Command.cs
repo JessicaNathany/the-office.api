@@ -17,7 +17,7 @@ namespace the_office.insfrastructure.Mediator.Message
         /// Check if of the command is in a valid state
         /// </summary>
         /// <returns></returns>
-        public virtual bool Valid()
+        public virtual bool IsValid()
         {
             return true;
         }

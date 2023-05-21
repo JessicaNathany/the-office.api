@@ -11,7 +11,7 @@ public static class DatabaseConfig
     {
         if (services == null) throw new ArgumentNullException(nameof(services));
 
-        var connectionString = configuration.GetConnectionString(nameof(TheOfficeDbContext));
+        var connectionString = configuration.GetConnectionString("TheOfficeConnectionString");
 
         services.AddDbContext<TheOfficeDbContext>(options =>
         {
