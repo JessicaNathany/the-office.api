@@ -20,7 +20,7 @@ namespace the_office.infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<int> SaveChanges()
+        Task IBaseRepository<TEntity>.SaveChanges()
         {
             throw new NotImplementedException();
         }
