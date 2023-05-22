@@ -1,6 +1,7 @@
 ﻿using the_office.api.application.Characters.Requests;
 using the_office.api.application.Characters.Responses;
 using the_office.domain.Interface;
+using the_office.domain.Repositories;
 using the_office.insfrastructure.Mediator.Message;
 
 namespace the_office.api.application.Characters.Handlers

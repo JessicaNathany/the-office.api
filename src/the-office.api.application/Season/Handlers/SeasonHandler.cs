@@ -1,6 +1,6 @@
 ﻿using the_office.api.application.Season.Requests;
 using the_office.api.application.Season.Responses;
-using the_office.domain.Interface;
+using the_office.domain.Repositories;
 using the_office.insfrastructure.Mediator.Message;
 
 namespace the_office.api.application.Season.Handlers

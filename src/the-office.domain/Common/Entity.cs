@@ -1,4 +1,4 @@
-﻿namespace the_office.domain.Model
+﻿namespace the_office.domain.Common
 {
     public class Entity
     {

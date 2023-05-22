@@ -1,5 +1,5 @@
-﻿using the_office.domain.Interface;
-using the_office.domain.Model;
+﻿using the_office.domain.Common;
+using the_office.domain.Repositories;
 
 namespace the_office.infrastructure.Data.Repositories
 {
@@ -23,12 +23,6 @@ namespace the_office.infrastructure.Data.Repositories
         public Task<int> SaveChanges()
         {
             throw new NotImplementedException();
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-            //Db?.Dispose
         }
     }
 }
