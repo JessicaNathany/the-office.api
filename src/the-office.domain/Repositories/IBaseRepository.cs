@@ -10,6 +10,6 @@ namespace the_office.domain.Repositories
 
         Task<IEnumerable<TEntity>> GetAll();
 
-        Task<int> SaveChanges();
+        Task SaveChanges();
     }
 }
