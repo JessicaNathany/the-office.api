@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using Swashbuckle.AspNetCore.Examples;
+using Swashbuckle.AspNetCore.Filters;
 using the_office.api.application.Characters.Requests;
 using the_office.api.ModelExamples;
 using the_office.domain.Response;

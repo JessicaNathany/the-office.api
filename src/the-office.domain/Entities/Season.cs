@@ -1,4 +1,4 @@
-﻿using the_office.domain.Model;
+﻿using the_office.domain.Common;
 
 namespace the_office.domain.Entities
 {

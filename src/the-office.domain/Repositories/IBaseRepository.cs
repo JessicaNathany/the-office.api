@@ -1,8 +1,8 @@
-﻿using the_office.domain.Model;
+﻿using the_office.domain.Common;
 
-namespace the_office.domain.Interface
+namespace the_office.domain.Repositories
 {
-    public interface IBaseRepository<TEntity> : IDisposable where TEntity : Entity
+    public interface IBaseRepository<TEntity> where TEntity : Entity
     {
         Task<TEntity> GetById(int id);
 
