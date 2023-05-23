@@ -10,7 +10,7 @@ builder.Services.AddControllers();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.ResolveDependencies();
+builder.Services.ResolveDependencies(builder.Host);
 
 // Swagger Config
 builder.Services.AddSwaggerConfiguration();
