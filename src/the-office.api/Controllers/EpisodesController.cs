@@ -1,34 +1,34 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using the_office.api.application.Episodes.Requests;
+using the_office.api.application.Episodes.Messaging.Requests;
 
-namespace the_office.api.Controllers
+namespace the_office.api.Controllers;
+
+[ApiController]
+[Route("episodes")]
+public class EpisodesController : ApiController
 {
-    [ApiController]
-    [Route("episodes")]
-    public class EpisodesController : ControllerBase
+    public EpisodesController(ISender sender) 
+        : base(sender)
     {
-        private readonly IMediator _mediator;
+    }
 
-        public EpisodesController(IMediator mediator)
-        {
-            _mediator = mediator;
-        }
-
-        [HttpGet]
-        public ActionResult Get()
-        {
-            throw new NotImplementedException();
-        }
+    [HttpGet]
+    public ActionResult Get()
+    {
+        throw new NotImplementedException();
+    }
         
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult> GetById([FromRoute] int id)
-        {
-            var request = new GetEpisodeByIdRequest(id);
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult> GetById([FromRoute] int id, CancellationToken cancellationToken)
+    {
+        var request = new GetEpisodeByIdRequest(id);
             
-            var response = await _mediator.Send(request);
+        var result = await Sender.Send(request, cancellationToken);
+
+        if (result.IsFailure)
+            return BadRequest(result.Error);
             
-            return Ok(response.Result);
-        }
+        return Ok(result.Value);
     }
 }

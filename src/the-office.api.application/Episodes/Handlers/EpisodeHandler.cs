@@ -1,22 +1,22 @@
-﻿using the_office.api.application.Episodes.Requests;
-using the_office.api.application.Episodes.Responses;
+﻿using the_office.api.application.Common.Commands;
+using the_office.api.application.Episodes.Messaging.Requests;
+using the_office.api.application.Episodes.Messaging.Responses;
 using the_office.domain.Repositories;
-using the_office.insfrastructure.Mediator.Message;
+using the_office.domain.Shared;
 
-namespace the_office.api.application.Episodes.Handlers
+namespace the_office.api.application.Episodes.Handlers;
+
+internal sealed class EpisodeHandler : ICommandHandler<EpisodeRequest, List<EpisodeResponse>>
 {
-    public class EpisodeHandler : CommandHandler<EpisodeRequest, List<EpisodeResponse>>
-    {
-        private readonly IEpisodeRepository _episodeRepository;
+    private readonly IEpisodeRepository _episodeRepository;
 
-        public EpisodeHandler(IEpisodeRepository episodeRepository)
-        {
-            _episodeRepository = episodeRepository;
-        }
+    public EpisodeHandler(IEpisodeRepository episodeRepository)
+    {
+        _episodeRepository = episodeRepository;
+    }
     
-        public override Task<CommandResponse<List<EpisodeResponse>>> Handle(EpisodeRequest request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
+    public Task<Result<List<EpisodeResponse>>> Handle(EpisodeRequest request, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 }

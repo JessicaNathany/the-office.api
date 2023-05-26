@@ -1,23 +1,23 @@
-﻿using the_office.api.application.Season.Requests;
-using the_office.api.application.Season.Responses;
+﻿using the_office.api.application.Common.Commands;
+using the_office.api.application.Season.Messaging.Requests;
+using the_office.api.application.Season.Messaging.Responses;
 using the_office.domain.Repositories;
-using the_office.insfrastructure.Mediator.Message;
+using the_office.domain.Shared;
 
-namespace the_office.api.application.Season.Handlers
+namespace the_office.api.application.Season.Handlers;
+
+internal sealed class SeasonHandler : ICommandHandler<SeasonRequest, List<SeasonResponse>>
 {
-    public class SeasonHandler : CommandHandler<SeasonRequest, List<SeasonResponse>>
+    private readonly ISeasonRepository _seasonRepository;
+
+    public SeasonHandler(ISeasonRepository seasonRepository)
     {
-        private readonly ISeasonRepository _seasonRepository;
+        _seasonRepository = seasonRepository;
+    }
 
-        public SeasonHandler(ISeasonRepository seasonRepository)
-        {
-            _seasonRepository = seasonRepository;
-        }
-
-        // to implement interface repository
-        public override Task<CommandResponse<List<SeasonResponse>>> Handle(SeasonRequest request, CancellationToken cancellationToken)
-        {
-            throw new NotImplementedException();
-        }
+    // to implement interface repository
+    public Task<Result<List<SeasonResponse>>> Handle(SeasonRequest request, CancellationToken cancellationToken)
+    {
+        throw new NotImplementedException();
     }
 }

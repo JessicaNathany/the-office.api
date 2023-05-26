@@ -1,4 +1,4 @@
-﻿namespace the_office.domain.Common
+﻿namespace the_office.domain.Shared
 {
     public class Entity
     {
