@@ -1,5 +1,5 @@
-﻿using the_office.domain.Common;
-using the_office.domain.Repositories;
+﻿using the_office.domain.Repositories;
+using the_office.domain.Shared;
 
 namespace the_office.infrastructure.Data.Repositories
 {
@@ -20,7 +20,7 @@ namespace the_office.infrastructure.Data.Repositories
             throw new NotImplementedException();
         }
 
-        Task IBaseRepository<TEntity>.SaveChanges()
+        public Task SaveChanges()
         {
             throw new NotImplementedException();
         }

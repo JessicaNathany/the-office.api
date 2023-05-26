@@ -1,12 +1,14 @@
 using AutoMapper;
-using the_office.api.application.Episodes.Requests;
-using the_office.api.application.Episodes.Responses;
+using the_office.api.application.Common.Commands;
+using the_office.api.application.Episodes.Messaging.Requests;
+using the_office.api.application.Episodes.Messaging.Responses;
+using the_office.domain.Errors;
 using the_office.domain.Repositories;
-using the_office.insfrastructure.Mediator.Message;
+using the_office.domain.Shared;
 
 namespace the_office.api.application.Episodes.Handlers;
 
-public class GetEpisodeByIdHandler : CommandHandler<GetEpisodeByIdRequest, EpisodeResponse>
+internal sealed class GetEpisodeByIdHandler : ICommandHandler<GetEpisodeByIdRequest, EpisodeResponse>
 {
     private readonly IEpisodeRepository _episodeRepository;
     private readonly IMapper _mapper;
@@ -17,17 +19,15 @@ public class GetEpisodeByIdHandler : CommandHandler<GetEpisodeByIdRequest, Episo
         _mapper = mapper;
     }
 
-    public override async Task<CommandResponse<EpisodeResponse>> Handle(GetEpisodeByIdRequest request, CancellationToken cancellationToken)
+    public async Task<Result<EpisodeResponse>> Handle(GetEpisodeByIdRequest request, CancellationToken cancellationToken)
     {
         var episode = await _episodeRepository.Get(request.Id);
 
-        // TODO: Need to refactor this for an appropriate result
         if (episode is null)
-            return new CommandResponse<EpisodeResponse>(null, null, null);
+            return Result.Failure<EpisodeResponse>(EpisodeError.NotFound);
 
         var response = _mapper.Map<EpisodeResponse>(episode);
 
-        // TODO: Need simplify this CommandResponse creation
-        return new CommandResponse<EpisodeResponse>(response, null, null);
+        return response;
     }
 }
