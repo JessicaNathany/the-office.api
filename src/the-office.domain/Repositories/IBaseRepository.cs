@@ -1,4 +1,4 @@
-﻿using the_office.domain.Common;
+﻿using the_office.domain.Shared;
 
 namespace the_office.domain.Repositories
 {
