@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <None Remove="appsettings.Development.json" />
+    <None Remove="development\**" />
   </ItemGroup>
 
   <ItemGroup>
@@ -48,6 +49,14 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="development\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="development\**" />
   </ItemGroup>
 
 </Project>

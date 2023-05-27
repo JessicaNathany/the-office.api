@@ -1,4 +1,5 @@
 using the_office.api.Configurations;
+using the_office.api.Filters;
 using the_office.api.Infrastructure.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,7 @@ builder.Configuration.AddJsonFile("appsettings.json");
 
 builder.Services.AddDatabaseConfiguration(builder.Configuration);
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options => options.Filters.Add<AfterHandlerActionFilterAttribute>());
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
