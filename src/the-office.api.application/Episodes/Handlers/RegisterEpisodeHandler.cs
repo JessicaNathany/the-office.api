@@ -23,7 +23,9 @@ internal sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRe
     {
         var episode = new Episode(request.Name, request.Description, request.AirDate, request.SeasonId);
 
-        await _episodeRepository.Insert(episode);
+        _episodeRepository.Add(episode);
+
+        await _episodeRepository.SaveChanges(cancellationToken);
 
         return _mapper.Map<EpisodeResponse>(episode);
     }

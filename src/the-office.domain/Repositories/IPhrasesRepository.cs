@@ -1,6 +1,7 @@
-﻿namespace the_office.domain.Interface
+﻿using the_office.domain.Entities;
+
+namespace the_office.domain.Repositories;
+
+public interface IPhrasesRepository : IRepository<Phrases>
 {
-    public interface IPhrasesRepository 
-    {
-    }
 }

@@ -1,8 +1,7 @@
 ﻿using the_office.domain.Entities;
 
-namespace the_office.domain.Repositories
+namespace the_office.domain.Repositories;
+
+public interface ISeasonRepository : IRepository<Season>
 {
-    public interface ISeasonRepository : IBaseRepository<Season>
-    {
-    }
 }

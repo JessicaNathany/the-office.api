@@ -87,10 +87,10 @@ public class AfterHandlerActionFilterAttribute : ActionFilterAttribute
 
         context.Result = new BadRequestObjectResult(details);
     }
-    
+
     private static void HandlerNotFound(ActionExecutedContext context, Result result)
     {
-        var details = new ProblemDetails()
+        var details = new ProblemDetails
         {
             Type = "https://tools.ietf.org/html/rfc7231#section-6.5.4",
             Title = "The specified resource was not found.",
@@ -108,7 +108,7 @@ public class AfterHandlerActionFilterAttribute : ActionFilterAttribute
             Type = "https://tools.ietf.org/html/rfc7231#section-6.5.1",
             Detail = error.Message,
             Status = StatusCodes.Status400BadRequest,
-            Extensions = { { nameof(errors), errors } }
+            Extensions = {{nameof(errors), errors}}
         };
     }
 }
