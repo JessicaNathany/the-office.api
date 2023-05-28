@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
 using the_office.api.application.Characters.Requests;
+using the_office.api.application.Characters.Responses;
 using the_office.api.ModelExamples;
 using the_office.domain.Response;
+using the_office.domain.Shared;
 
 namespace the_office.api.Controllers;
 
@@ -30,13 +32,8 @@ public class CharactersController : ApiController
     [SwaggerResponseExample(StatusCodes.Status404NotFound, typeof(NotFoundErrorModelExample))]
     [ProducesResponseType(typeof(ObjectResponse), StatusCodes.Status201Created)]
     [SwaggerResponseExample(StatusCodes.Status201Created, typeof(CharacterModelExample))]
-    public async Task<IActionResult> PostCharacterAsync([FromBody] CreateCharacterRequest request)
+    public async Task<Result<List<CreateCharacterResponse>>> PostCharacterAsync([FromBody] CreateCharacterRequest request)
     {
-        var result = await Sender.Send(request);
-
-        if (result.IsFailure)
-            return BadRequest(result.Error);
-
-        return Ok(result);
+        return await Sender.Send(request);
     }
 }
