@@ -11,11 +11,13 @@ namespace the_office.api.application.Episodes.Handlers;
 internal sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRequest, EpisodeResponse>
 {
     private readonly IEpisodeRepository _episodeRepository;
+    private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
-    public RegisterEpisodeHandler(IEpisodeRepository episodeRepository, IMapper mapper)
+    public RegisterEpisodeHandler(IEpisodeRepository episodeRepository, IUnitOfWork unitOfWork, IMapper mapper)
     {
         _episodeRepository = episodeRepository;
+        _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
 
@@ -25,7 +27,7 @@ internal sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRe
 
         _episodeRepository.Add(episode);
 
-        await _episodeRepository.SaveChanges(cancellationToken);
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         return _mapper.Map<EpisodeResponse>(episode);
     }

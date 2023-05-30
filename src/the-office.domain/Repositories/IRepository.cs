@@ -11,5 +11,4 @@ public interface IRepository<TEntity> where TEntity : Entity
     Task<TEntity?> GetByCode(Guid code, CancellationToken cancellationToken = default);
     Task<IEnumerable<TEntity>> GetAll(CancellationToken cancellationToken = default);
     IQueryable<TEntity> GetQueryable();
-    Task SaveChanges(CancellationToken cancellationToken = default);
 }
