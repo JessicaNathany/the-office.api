@@ -10,6 +10,12 @@ namespace the_office.domain.Repositories
 
         Task<IEnumerable<TEntity>> GetAll();
 
+        Task<TEntity> Create(TEntity entity);
+
+        Task Delete(int id);
+
+        Task<TEntity> Update(int id);
+
         Task SaveChanges();
     }
 }

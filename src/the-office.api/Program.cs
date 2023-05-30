@@ -1,5 +1,4 @@
 using the_office.api.Configurations;
-using the_office.api.Infrastructure.HealthChecks;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Configuration.AddJsonFile("appsettings.json");
