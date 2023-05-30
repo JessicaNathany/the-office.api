@@ -14,5 +14,4 @@ public interface IRepository<TEntity> where TEntity : Entity
     Task<IEnumerable<TEntity>?> GetAll(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
     Task<IEnumerable<TEntity>> GetAll(CancellationToken cancellationToken = default);
     IQueryable<TEntity> GetQueryable();
-    Task SaveChanges(CancellationToken cancellationToken = default);
 }
