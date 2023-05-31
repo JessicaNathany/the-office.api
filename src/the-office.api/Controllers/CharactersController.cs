@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
-using the_office.api.application.Characters.Requests;
+using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.ModelExamples;
 using the_office.domain.Response;
 
@@ -30,9 +30,9 @@ public class CharactersController : ApiController
     [SwaggerResponseExample(StatusCodes.Status404NotFound, typeof(NotFoundErrorModelExample))]
     [ProducesResponseType(typeof(ObjectResponse), StatusCodes.Status201Created)]
     [SwaggerResponseExample(StatusCodes.Status201Created, typeof(CharacterModelExample))]
-    public async Task<IActionResult> PostCharacterAsync([FromBody] CreateCharacterRequest request)
+    public async Task<IActionResult> PostCharacterAsync([FromBody] InsertCharacterRequest request, CancellationToken cancellationToken)
     {
-        var result = await Sender.Send(request);
+        var result = await Sender.Send(request, cancellationToken);
 
         if (result.IsFailure)
             return BadRequest(result.Error);

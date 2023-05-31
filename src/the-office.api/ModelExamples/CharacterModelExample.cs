@@ -8,11 +8,13 @@ namespace the_office.api.ModelExamples
     /// <summary>
     /// Class representing an example response from the character registration route
     /// </summary>
-    public class CharacterModelExample : IExamplesProvider<object>
+    public class CharacterModelExample //: IExamplesProvider<object>
     {
-        public object GetExamples()
-        {
-            return Builder<ObjectResponse>.CreateNew().With(c => c.Data, NBuilderUtils.CreateCharacter()).Build();
-        }
+       // TODO: refactoring
+
+        //public object GetExamples()
+        //{
+        //    return Builder<ObjectResponse>.CreateNew().With(c => c.Data, NBuilderUtils.CreateCharacter()).Build();
+        //}
     }
 }
