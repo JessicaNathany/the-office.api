@@ -12,7 +12,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Common\Behaviours\" />
     <Folder Include="Common\Helpers\" />
     <Folder Include="Episodes\Messaging\" />
     <Folder Include="Phrases\Handler\" />

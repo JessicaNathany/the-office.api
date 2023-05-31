@@ -4,6 +4,16 @@ namespace the_office.domain.Entities
 {
     public sealed class Episode : Entity
     {
+        public Episode() { }
+        
+        public Episode(string name, string description, DateTime airDate, int seasonId)
+        {
+            Name = name;
+            Description = description;
+            AirDate = airDate;
+            SeasonId = seasonId;
+        }
+
         /// <summary>
         /// The name of the episode
         /// </summary>
@@ -12,7 +22,7 @@ namespace the_office.domain.Entities
         /// <summary>
         /// When this Episode aired 
         /// </summary>
-        public string AirDate { get; set; }
+        public DateTime AirDate { get; set; }
 
         /// <summary>
         /// The description of the episode

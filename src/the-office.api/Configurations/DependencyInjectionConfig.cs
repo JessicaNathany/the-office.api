@@ -1,6 +1,9 @@
 ﻿using Autofac;
 using Autofac.Extensions.DependencyInjection;
+using FluentValidation;
+using MediatR;
 using the_office.api.application.Common;
+using the_office.api.application.Common.Behaviors;
 using the_office.infrastructure;
 
 namespace the_office.api.Configurations;
@@ -12,13 +15,10 @@ public static class DependencyInjectionConfig
         services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(AssemblyReference.Assembly);
-            
-            // TODO: For future implementation
-            // Mediator Behaviors
-            // config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(UnhandledExceptionBehaviour<,>));
-            // config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehaviour<,>));
+            config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
         });
-            
+        
+        services.AddValidatorsFromAssembly(AssemblyReference.Assembly, includeInternalTypes: true);
         services.AddAutoMapper(AssemblyReference.Assembly);
             
         // Autofac configuration

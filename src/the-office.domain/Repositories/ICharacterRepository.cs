@@ -1,9 +1,8 @@
 ﻿using the_office.domain.Entities;
 
-namespace the_office.domain.Repositories
+namespace the_office.domain.Repositories;
+
+public interface ICharacterRepository : IRepository<Character>
 {
-    public interface ICharacterRepository : IBaseRepository<Character>
-    {
-        Task<Character> GetByName(string personaName);
-    }
+    Task<Character> GetByName(string personaName);
 }

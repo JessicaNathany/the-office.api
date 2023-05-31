@@ -9,14 +9,22 @@ public class Error : IEquatable<Error>
 
     public Error(ErrorType code, string message)
     {
-        Code = code;
+        Code = code.ToString();
+        Message = message;
+    }
+    
+    private Error(string property, string message)
+    {
+        Code = property;
         Message = message;
     }
 
-    public ErrorType Code { get; }
+    public string Code { get; }
     public string Message { get; }
 
-    public static implicit operator ErrorType(Error error) => error.Code;
+    public static Error ValidationError(string name, string message) => new(name, message);
+
+    public static implicit operator string(Error error) => error.Code;
 
     public static bool operator ==(Error? a, Error? b)
     {

@@ -1,12 +1,11 @@
-﻿namespace the_office.domain.Enums
+﻿namespace the_office.domain.Enums;
+
+public enum ErrorType
 {
-    public enum ErrorType
-    {
-        None,
-        NullValue,
-        RequiredValidation,
-        ResourceNotFound,
-        ValidationCustomMessage,
-        ValidationError
-    }
+    None,
+    NullValue,
+    RequiredValidation,
+    ResourceNotFound,
+    ValidationCustomMessage,
+    ValidationError
 }
