@@ -2,18 +2,19 @@
 using the_office.domain.Repositories;
 using the_office.infrastructure.Data.Context;
 
-namespace the_office.infrastructure.Data.Repositories
+namespace the_office.infrastructure.Data.Repositories;
+
+public class CharacterRepository : Repository<Character>, ICharacterRepository
 {
-    public class CharacterRepository : BaseRepository<Character>, ICharacterRepository
+    private readonly TheOfficeDbContext _context;
+
+    public CharacterRepository(TheOfficeDbContext context) : base(context)
     {
-        private readonly TheOfficeDbContext _context;
-        public CharacterRepository(TheOfficeDbContext context) : base(context)
-        {
-            _context = context;
-        }
-        public async Task<Character> GetByName(string personaName)
-        {
-            throw new NotImplementedException();
-        }
+        _context = context;
+    }
+
+    public async Task<Character> GetByName(string personaName)
+    {
+        throw new NotImplementedException();
     }
 }

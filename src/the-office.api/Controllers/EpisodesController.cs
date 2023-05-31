@@ -1,10 +1,13 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using the_office.api.application.Episodes.Messaging.Requests;
+using the_office.api.application.Episodes.Messaging.Responses;
+using the_office.domain.Shared;
 
 namespace the_office.api.Controllers;
 
 [ApiController]
+[Produces("application/json")]
 [Route("episodes")]
 public class EpisodesController : ApiController
 {
@@ -13,22 +16,21 @@ public class EpisodesController : ApiController
     {
     }
 
-    [HttpGet]
-    public ActionResult Get()
+    [HttpPost]
+    [ProducesResponseType(typeof(EpisodeResponse), StatusCodes.Status201Created)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<Result<EpisodeResponse>> Register([FromBody] RegisterEpisodeRequest request)
     {
-        throw new NotImplementedException();
+        return await Sender.Send(request);
     }
         
     [HttpGet("{id:int}")]
-    public async Task<ActionResult> GetById([FromRoute] int id, CancellationToken cancellationToken)
+    [ProducesResponseType(typeof(EpisodeResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<Result<EpisodeResponse>> GetById([FromRoute] int id, CancellationToken cancellationToken)
     {
         var request = new GetEpisodeByIdRequest(id);
             
-        var result = await Sender.Send(request, cancellationToken);
-
-        if (result.IsFailure)
-            return BadRequest(result.Error);
-            
-        return Ok(result.Value);
+        return await Sender.Send(request, cancellationToken);
     }
 }

@@ -4,6 +4,7 @@ using Swashbuckle.AspNetCore.Filters;
 using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.ModelExamples;
 using the_office.domain.Response;
+using the_office.domain.Shared;
 
 namespace the_office.api.Controllers;
 

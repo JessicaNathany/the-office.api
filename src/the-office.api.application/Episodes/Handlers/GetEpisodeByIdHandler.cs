@@ -21,7 +21,7 @@ internal sealed class GetEpisodeByIdHandler : ICommandHandler<GetEpisodeByIdRequ
 
     public async Task<Result<EpisodeResponse>> Handle(GetEpisodeByIdRequest request, CancellationToken cancellationToken)
     {
-        var episode = await _episodeRepository.Get(request.Id);
+        var episode = await _episodeRepository.GetById(request.Id, cancellationToken);
 
         if (episode is null)
             return Result.Failure<EpisodeResponse>(EpisodeError.NotFound);
