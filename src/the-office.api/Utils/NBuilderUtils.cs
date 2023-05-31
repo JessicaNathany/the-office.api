@@ -1,12 +1,13 @@
 ﻿using FizzWare.NBuilder;
+using the_office.api.application.Characters.Messaging.Response;
 
 namespace the_office.api.Utils
 {
     public  static class NBuilderUtils
     {
-        //public static InsertCharacterResponse CreateCharacter()
-        //{
-        //    return Builder<InsertCharacterResponse>.CreateNew().Build();
-        //}
+        public static CharacterResponse CreateCharacter()
+        {
+            return Builder<CharacterResponse>.CreateNew().Build();
+        }
     }
 }

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
 using the_office.api.application.Characters.Messaging.Requests;
+using the_office.api.application.Characters.Messaging.Response;
 using the_office.api.ModelExamples;
 using the_office.domain.Response;
 using the_office.domain.Shared;
@@ -17,6 +18,16 @@ public class CharactersController : ApiController
     {
     }
 
+    [HttpGet("{id:int}")]
+    [ProducesResponseType(typeof(CharacterResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<Result<CharacterResponse>> GetById([FromRoute] int id, CancellationToken cancellationToken)
+    {
+        var request = new GetCharacterByIdRequest(id);
+
+        return await Sender.Send(request, cancellationToken); // to continue...
+    }
+
     [HttpGet]
     [Route("GetAll")]
     public ActionResult Index()
@@ -25,19 +36,13 @@ public class CharactersController : ApiController
     }
 
     [HttpPost]
-    [Route("add")]
-    [ProducesResponseType(typeof(ObjectResponse), StatusCodes.Status422UnprocessableEntity)]
+    [ProducesResponseType(typeof(CharacterResponse), StatusCodes.Status422UnprocessableEntity)]
     [SwaggerResponseExample(StatusCodes.Status422UnprocessableEntity, typeof(ValidationResponseModelExamples))]
-    [SwaggerResponseExample(StatusCodes.Status404NotFound, typeof(NotFoundErrorModelExample))]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ObjectResponse), StatusCodes.Status201Created)]
     [SwaggerResponseExample(StatusCodes.Status201Created, typeof(CharacterModelExample))]
-    public async Task<IActionResult> PostCharacterAsync([FromBody] InsertCharacterRequest request, CancellationToken cancellationToken)
+    public async Task<Result<CharacterResponse>> RegisterAsync([FromBody] RegisterCharacterRequest request)
     {
-        var result = await Sender.Send(request, cancellationToken);
-
-        if (result.IsFailure)
-            return BadRequest(result.Error);
-
-        return Ok(result);
+        return await Sender.Send(request);
     }
 }
