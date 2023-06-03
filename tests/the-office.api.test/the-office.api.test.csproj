@@ -11,7 +11,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Bogus" Version="34.0.2" />
+    <PackageReference Include="FluentAssertions" Version="6.11.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.5.0" />
+    <PackageReference Include="MockQueryable.Moq" Version="7.0.0" />
+    <PackageReference Include="Moq" Version="4.18.4" />
     <PackageReference Include="xunit" Version="2.4.2" />
     <PackageReference Include="xunit.runner.visualstudio" Version="2.4.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -25,6 +29,17 @@
 
   <ItemGroup>
     <Folder Include="Handler\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\the-office.api.application\the-office.api.application.csproj" />
+    <ProjectReference Include="..\..\src\the-office.domain\the-office.domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\..\..\..\..\.nuget\packages\automapper\12.0.1\lib\netstandard2.1\AutoMapper.dll</HintPath>
+    </Reference>
   </ItemGroup>
 
 </Project>
