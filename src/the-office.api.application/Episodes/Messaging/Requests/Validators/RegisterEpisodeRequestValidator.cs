@@ -9,6 +9,6 @@ internal class RegisterEpisodeRequestValidator : AbstractValidator<RegisterEpiso
         RuleFor(request => request.Name).NotEmpty();
         RuleFor(request => request.Description).NotEmpty();
         RuleFor(request => request.AirDate).NotNull();
-        RuleFor(request => request.SeasonId).GreaterThan(0);
+        RuleFor(request => request.SeasonCode).NotEmpty();
     }
 }

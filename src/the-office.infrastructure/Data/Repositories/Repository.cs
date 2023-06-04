@@ -46,6 +46,16 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         return _context.Set<TEntity>();
     }
 
+    public async Task<int> Count(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<TEntity>().Where(predicate).CountAsync(cancellationToken);
+    }
+
+    public async Task<bool> Any(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
+    {
+        return await _context.Set<TEntity>().Where(predicate).AnyAsync(cancellationToken);
+    }
+
     public void Add(TEntity entity)
     {
         _context.Set<TEntity>().Add(entity);
@@ -59,10 +69,5 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     public void Remove(TEntity entity)
     {
         _context.Set<TEntity>().Remove(entity);
-    }
-
-    public async Task SaveChanges(CancellationToken cancellationToken = default)
-    {
-        await _context.SaveChangesAsync(cancellationToken);
     }
 }

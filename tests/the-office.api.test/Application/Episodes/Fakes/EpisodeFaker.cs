@@ -12,7 +12,7 @@ internal sealed class EpisodeFaker : Faker<Episode>
             faker.Name.FullName(),
             faker.Name.JobDescriptor(),
             faker.Date.Past(),
-            faker.Database.Random.Int()
+            SeasonFaker.Create()
         ));
         
         RuleFor(episode => episode.Id, faker => faker.Database.Random.Int());
