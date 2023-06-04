@@ -17,5 +17,5 @@ public sealed record RegisterCharacterRequest() : ICommand<CharacterResponse>
 
     public string Job { get; set; }
 
-    public IEnumerable<EpisodeCharacter> Episodes { get; set; }
+    public List<EpisodeCharacter> Episodes { get; set; }
 }
