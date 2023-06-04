@@ -22,7 +22,7 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     
     public async Task<IEnumerable<TEntity>?> GetAll(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
     {
-        return await _context.Set<TEntity>().Where(predicate).ToListAsync(cancellationToken);
+        return await _context.Set<TEntity>().AsNoTracking().Where(predicate).ToListAsync(cancellationToken);
     }
 
     public async Task<IEnumerable<TEntity>> GetAll(CancellationToken cancellationToken = default)

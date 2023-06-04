@@ -1,4 +1,5 @@
-﻿using the_office.domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using the_office.domain.Entities;
 using the_office.domain.Repositories;
 using the_office.infrastructure.Data.Context;
 
@@ -13,8 +14,8 @@ public class CharacterRepository : Repository<Character>, ICharacterRepository
         _context = context;
     }
 
-    public async Task<Character> GetByName(string personaName)
+    public async Task<Character> GetByName(string personaName, string actorName)
     {
-        throw new NotImplementedException();
+        return await _context.Set<Character>().AsNoTracking().FirstOrDefaultAsync(c => c.Name == personaName && c.NameActor == actorName);
     }
 }

@@ -7,5 +7,6 @@ public enum ErrorType
     RequiredValidation,
     ResourceNotFound,
     ValidationCustomMessage,
-    ValidationError
+    ValidationError,
+    ExistingEegister
 }
