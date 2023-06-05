@@ -4,8 +4,6 @@ namespace the_office.domain.Entities;
 
 public class Character : Entity
 {
-    protected Character() { }
-    
     /// <summary>
     /// Name of the Character
     /// </summary>
