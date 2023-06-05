@@ -12,7 +12,7 @@ using the_office.infrastructure.Data.Context;
 namespace the_office.infrastructure.Data.Migrations
 {
     [DbContext(typeof(TheOfficeDbContext))]
-    [Migration("20230517004248_InitialDatabaseSchema")]
+    [Migration("20230604210933_InitialDatabaseSchema")]
     partial class InitialDatabaseSchema
     {
         /// <inheritdoc />
@@ -24,6 +24,36 @@ namespace the_office.infrastructure.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("CharacterEpisode", b =>
+                {
+                    b.Property<int>("CharactersId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("EpisodesId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("CharactersId", "EpisodesId");
+
+                    b.HasIndex("EpisodesId");
+
+                    b.ToTable("CharacterEpisode");
+                });
+
+            modelBuilder.Entity("CharacterSeason", b =>
+                {
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("SeasonId")
+                        .HasColumnType("integer");
+
+                    b.HasKey("CharacterId", "SeasonId");
+
+                    b.HasIndex("SeasonId");
+
+                    b.ToTable("CharacterSeason");
+                });
 
             modelBuilder.Entity("the_office.domain.Entities.Character", b =>
                 {
@@ -38,23 +68,28 @@ namespace the_office.infrastructure.Data.Migrations
 
                     b.Property<string>("Gender")
                         .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("ImageUrl")
                         .IsRequired()
-                        .HasColumnType("varchar(500)");
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.Property<string>("Job")
                         .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<string>("NameActor")
                         .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int?>("SeasonId")
                         .HasColumnType("integer");
@@ -63,6 +98,9 @@ namespace the_office.infrastructure.Data.Migrations
                         .HasColumnType("boolean");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.HasIndex("SeasonId");
 
@@ -77,32 +115,36 @@ namespace the_office.infrastructure.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AirDate")
-                        .IsRequired()
-                        .HasColumnType("varchar(50)");
+                    b.Property<DateTime>("AirDate")
+                        .HasColumnType("date");
 
                     b.Property<Guid>("Code")
                         .HasColumnType("uuid");
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("varchar(50)");
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
                     b.Property<int>("SeasonId")
-                        .HasColumnType("int");
+                        .HasColumnType("integer");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Code")
+                        .IsUnique();
 
                     b.HasIndex("SeasonId");
 
                     b.ToTable("Episode", (string)null);
                 });
 
-            modelBuilder.Entity("the_office.domain.Entities.EpisodeCharacter", b =>
+            modelBuilder.Entity("the_office.domain.Entities.Phrases", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -110,19 +152,25 @@ namespace the_office.infrastructure.Data.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("IdCharacter")
-                        .HasColumnType("integer");
+                    b.Property<string>("CharacterName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
 
-                    b.Property<int>("IdEpisode")
-                        .HasColumnType("integer");
+                    b.Property<Guid>("Code")
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Phrase")
+                        .IsRequired()
+                        .HasMaxLength(500)
+                        .HasColumnType("character varying(500)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdCharacter");
+                    b.HasIndex("Code")
+                        .IsUnique();
 
-                    b.HasIndex("IdEpisode");
-
-                    b.ToTable("EpisodeCharacter", (string)null);
+                    b.ToTable("Phrase", (string)null);
                 });
 
             modelBuilder.Entity("the_office.domain.Entities.Season", b =>
@@ -138,11 +186,41 @@ namespace the_office.infrastructure.Data.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("varchar(100)");
+                        .HasMaxLength(100)
+                        .HasColumnType("character varying(100)");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Code")
+                        .IsUnique();
+
                     b.ToTable("Season", (string)null);
+                });
+
+            modelBuilder.Entity("CharacterEpisode", b =>
+                {
+                    b.HasOne("the_office.domain.Entities.Character", null)
+                        .WithMany()
+                        .HasForeignKey("CharactersId")
+                        .IsRequired();
+
+                    b.HasOne("the_office.domain.Entities.Episode", null)
+                        .WithMany()
+                        .HasForeignKey("EpisodesId")
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("CharacterSeason", b =>
+                {
+                    b.HasOne("the_office.domain.Entities.Character", null)
+                        .WithMany()
+                        .HasForeignKey("CharacterId")
+                        .IsRequired();
+
+                    b.HasOne("the_office.domain.Entities.Season", null)
+                        .WithMany()
+                        .HasForeignKey("SeasonId")
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("the_office.domain.Entities.Character", b =>
@@ -160,33 +238,6 @@ namespace the_office.infrastructure.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Season");
-                });
-
-            modelBuilder.Entity("the_office.domain.Entities.EpisodeCharacter", b =>
-                {
-                    b.HasOne("the_office.domain.Entities.Character", "Character")
-                        .WithMany("Episodes")
-                        .HasForeignKey("IdCharacter")
-                        .IsRequired();
-
-                    b.HasOne("the_office.domain.Entities.Episode", "Episode")
-                        .WithMany("Characters")
-                        .HasForeignKey("IdEpisode")
-                        .IsRequired();
-
-                    b.Navigation("Character");
-
-                    b.Navigation("Episode");
-                });
-
-            modelBuilder.Entity("the_office.domain.Entities.Character", b =>
-                {
-                    b.Navigation("Episodes");
-                });
-
-            modelBuilder.Entity("the_office.domain.Entities.Episode", b =>
-                {
-                    b.Navigation("Characters");
                 });
 
             modelBuilder.Entity("the_office.domain.Entities.Season", b =>

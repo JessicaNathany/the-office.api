@@ -2,10 +2,10 @@
 using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.application.Characters.Messaging.Response;
 using the_office.api.application.Common.Commands;
+using the_office.domain.Entities;
 using the_office.domain.Errors;
 using the_office.domain.Repositories;
 using the_office.domain.Shared;
-using the_office.infrastructure;
 
 namespace the_office.api.application.Characters.Handlers;
 
@@ -13,35 +13,36 @@ public sealed class RegisterCharacterHandler : ICommandHandler<RegisterCharacter
 {
     private readonly ICharacterRepository _characterRepository;
     private readonly IMapper _mapper;
-    private readonly ITransactionManager _transactionManager;
+    private readonly IUnitOfWork _unitOfWork;
 
-    public RegisterCharacterHandler(ICharacterRepository characterRepository, IMapper mapper, ITransactionManager transactionManager)
+    public RegisterCharacterHandler(ICharacterRepository characterRepository, IMapper mapper, IUnitOfWork unitOfWork)
     {
-        _characterRepository= characterRepository;  
+        _characterRepository = characterRepository;
         _mapper = mapper;
-        _transactionManager = transactionManager;    
+        _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result<CharacterResponse>> Handle(RegisterCharacterRequest request, CancellationToken cancellationToken)
+    public async Task<Result<CharacterResponse>> Handle(RegisterCharacterRequest request,
+        CancellationToken cancellationToken)
     {
         var characterExist = await _characterRepository.GetByName(request.Name, request.NameActor);
 
         if (characterExist != null)
             return Result.Failure<CharacterResponse>(CharacterError.Exists);
 
-        try
-        {
-            await _characterRepository.SaveChanges();
-            await _transactionManager.Commit();
-        }
-        catch (Exception)
-        {
-            _transactionManager.Rollback();
-            throw;
-        }
+        // TODO: Need create an instance of character
+        var character = new Character();
 
-        var response = _mapper.Map<CharacterResponse>(request);
+        await _unitOfWork.BeginTransaction();
 
-        return response;
+        _characterRepository.Add(character);
+
+        await _unitOfWork.SaveChangesAsync(cancellationToken);
+
+        var success = await _unitOfWork.Commit(cancellationToken);
+        if (!success)
+            return Result.Failure<CharacterResponse>(CharacterError.ErrorWhenRegister);
+
+        return _mapper.Map<CharacterResponse>(character);
     }
 }

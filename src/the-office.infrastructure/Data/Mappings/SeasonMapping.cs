@@ -2,19 +2,28 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using the_office.domain.Entities;
 
-namespace the_office.insfrastructure.Mappings
+namespace the_office.infrastructure.Data.Mappings;
+
+public class SeasonMapping : IEntityTypeConfiguration<Season>
 {
-    public class SeasonMapping : IEntityTypeConfiguration<Season>
+    public void Configure(EntityTypeBuilder<Season> builder)
     {
-        public void Configure(EntityTypeBuilder<Season> builder)
-        {
-            builder.HasKey(c => c.Id);
+        builder.HasKey(c => c.Id);
+        
+        builder.HasIndex(b => b.Code)
+            .IsUnique();
 
-            builder.Property(b => b.Description)
-                .IsRequired()
-                .HasColumnType("varchar(100)");
+        builder.Property(b => b.Description)
+            .HasMaxLength(100)
+            .IsRequired();
 
-            builder.ToTable("Season");
-        }
+        builder.HasMany(season => season.Episodes)
+            .WithOne(episode => episode.Season)
+            .HasForeignKey(episode => episode.SeasonId);
+
+        builder.HasMany<Character>()
+            .WithMany();
+
+        builder.ToTable("Season");
     }
 }

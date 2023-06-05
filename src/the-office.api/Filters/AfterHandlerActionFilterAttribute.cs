@@ -16,9 +16,12 @@ public class AfterHandlerActionFilterAttribute : ActionFilterAttribute
         _failureHandlers = new Dictionary<ErrorType, Action<ActionExecutedContext, Result>>()
         {
             {ErrorType.ValidationError, HandlerValidationError},
-            {ErrorType.ResourceNotFound, HandlerNotFound}
+            {ErrorType.ResourceNotFound, HandlerNotFound},
+            {ErrorType.ErrorWhenExecuting, HandlerError}
         };
     }
+
+   
 
     public override void OnActionExecuted(ActionExecutedContext context)
     {
@@ -98,6 +101,22 @@ public class AfterHandlerActionFilterAttribute : ActionFilterAttribute
         };
 
         context.Result = new NotFoundObjectResult(details);
+    }
+    
+    private static void HandlerError(ActionExecutedContext context, Result result)
+    {
+        var details = new ProblemDetails
+        {
+            Status = StatusCodes.Status500InternalServerError,
+            Title = "An error occurred while processing your request.",
+            Type = "https://tools.ietf.org/html/rfc7231#section-6.6.1",
+            Detail = result.Error.Message
+        };
+
+        context.Result = new ObjectResult(details)
+        {
+            StatusCode = StatusCodes.Status500InternalServerError
+        };
     }
 
     private static ProblemDetails CreateValidationProblemDetails(Error error, Error[]? errors = null)
