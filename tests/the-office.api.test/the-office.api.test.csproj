@@ -29,10 +29,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Handler\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\src\the-office.api.application\the-office.api.application.csproj" />
     <ProjectReference Include="..\..\src\the-office.domain\the-office.domain.csproj" />
   </ItemGroup>
