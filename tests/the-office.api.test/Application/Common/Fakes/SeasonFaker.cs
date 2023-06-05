@@ -1,7 +1,7 @@
 using Bogus;
 using the_office.domain.Entities;
 
-namespace the_office.api.test.Application.Episodes.Fakes;
+namespace the_office.api.test.Application.Common.Fakes;
 
 internal sealed class SeasonFaker : Faker<Season>
 {

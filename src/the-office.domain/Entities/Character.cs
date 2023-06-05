@@ -4,6 +4,17 @@ namespace the_office.domain.Entities;
 
 public class Character : Entity
 {
+    public Character() { }
+    public Character(string name, string nameActor, bool status, string gender, string imageUrl, string job)
+    {
+        Name = name;
+        NameActor = nameActor;
+        Status = status;
+        Gender = gender;
+        ImageUrl = imageUrl;
+        Job = job;
+    }
+
     /// <summary>
     /// Name of the Character
     /// </summary>

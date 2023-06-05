@@ -3,7 +3,7 @@ using the_office.api.application.Common.Mappings;
 using the_office.api.application.Episodes.Messaging.Requests;
 using the_office.domain.Repositories;
 using the_office.api.application.Episodes.Handlers;
-using the_office.api.test.Application.Episodes.Fakes;
+using the_office.api.test.Application.Common.Fakes;
 using the_office.domain.Errors;
 
 namespace the_office.api.test.Application.Episodes.Handlers;

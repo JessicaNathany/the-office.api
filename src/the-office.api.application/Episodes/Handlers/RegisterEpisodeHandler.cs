@@ -9,7 +9,7 @@ using the_office.domain.Shared;
 
 namespace the_office.api.application.Episodes.Handlers;
 
-internal sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRequest, EpisodeResponse>
+public sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRequest, EpisodeResponse>
 {
     private readonly IEpisodeRepository _episodeRepository;
     private readonly ISeasonRepository _seasonRepository;
@@ -27,7 +27,7 @@ internal sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRe
         _mapper = mapper;
     }
 
-    public async Task<Result<EpisodeResponse>> Handle(RegisterEpisodeRequest request, CancellationToken cancellationToken)
+    public async Task<Result<EpisodeResponse>> Handle(RegisterEpisodeRequest request, CancellationToken cancellationToken = default)
     {
         var season = await _seasonRepository.GetByCode(request.SeasonCode, cancellationToken);
 

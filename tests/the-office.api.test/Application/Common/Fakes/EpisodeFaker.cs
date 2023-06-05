@@ -2,7 +2,7 @@ using Bogus;
 using MockQueryable.Moq;
 using the_office.domain.Entities;
 
-namespace the_office.api.test.Application.Episodes.Fakes;
+namespace the_office.api.test.Application.Common.Fakes;
 
 internal sealed class EpisodeFaker : Faker<Episode>
 {
