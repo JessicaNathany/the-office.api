@@ -2,31 +2,37 @@
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using the_office.domain.Entities;
 
-namespace the_office.insfrastructure.Mappings
+namespace the_office.infrastructure.Data.Mappings;
+
+public class EpisodeMapping : IEntityTypeConfiguration<Episode>
 {
-    public class EpisodeMapping : IEntityTypeConfiguration<Episode>
+    public void Configure(EntityTypeBuilder<Episode> builder)
     {
-        public void Configure(EntityTypeBuilder<Episode> builder)
-        {
-            builder.HasKey(c => c.Id);
+        builder.HasKey(c => c.Id);
+        
+        builder.HasIndex(b => b.Code)
+            .IsUnique();
 
-            builder.Property(b => b.Name)
-                .IsRequired()
-                .HasColumnType("varchar(50)");
+        builder.Property(b => b.Name)
+            .HasMaxLength(50)
+            .IsRequired();
 
-            builder.Property(b => b.AirDate)
-                .IsRequired()
-                .HasColumnType("varchar(50)");
+        builder.Property(b => b.AirDate)
+            .HasColumnType("date")
+            .IsRequired();
 
-            builder.Property(b => b.Description)
-               .IsRequired()
-               .HasColumnType("varchar(100)");
+        builder.Property(b => b.Description)
+            .HasMaxLength(100)
+            .IsRequired();
 
-            builder.Property(b => b.SeasonId)
-               .IsRequired()
-               .HasColumnType("int");
+        builder.HasOne(episode => episode.Season)
+            .WithMany(season => season.Episodes)
+            .HasForeignKey(b => b.SeasonId)
+            .IsRequired();
 
-            builder.ToTable("Episode");
-        }
+        builder.HasMany<Character>(episode => episode.Characters)
+            .WithMany(e => e.Episodes);
+
+        builder.ToTable("Episode");
     }
 }

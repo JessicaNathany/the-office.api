@@ -8,5 +8,6 @@ public enum ErrorType
     ResourceNotFound,
     ValidationCustomMessage,
     ValidationError,
-    ExistingEegister
+    ExistingRegister,
+    ErrorWhenExecuting
 }

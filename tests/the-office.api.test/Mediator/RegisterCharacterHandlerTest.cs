@@ -1,14 +1,11 @@
-﻿using AutoMapper;
-using Moq;
-using Moq.AutoMock;
+﻿using Moq.AutoMock;
 using the_office.api.application.Characters.Handlers;
 using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.application.Characters.Messaging.Response;
 using the_office.domain.Entities;
 using the_office.domain.Repositories;
-using Xunit;
 
-namespace the_office.api.test.Handler
+namespace the_office.api.test.Mediator
 {
     [Collection("the-office")]
     public class RegisterCharacterHandlerTest

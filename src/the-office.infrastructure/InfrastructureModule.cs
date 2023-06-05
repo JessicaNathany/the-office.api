@@ -2,6 +2,7 @@ using Autofac;
 using the_office.infrastructure.Data.Context;
 using System.Reflection;
 using the_office.domain.Repositories;
+using the_office.infrastructure.Data;
 using the_office.infrastructure.Data.Repositories;
 
 namespace the_office.infrastructure;
@@ -17,6 +18,10 @@ public class InfrastructureModule : Autofac.Module
         
         builder.RegisterGeneric(typeof(Repository<>))
             .As(typeof(IRepository<>))
+            .InstancePerLifetimeScope();
+        
+        builder.RegisterType<UnitOfWork>()
+            .As(typeof(IUnitOfWork))
             .InstancePerLifetimeScope();
         
         builder.RegisterType<TheOfficeDbContext>()
