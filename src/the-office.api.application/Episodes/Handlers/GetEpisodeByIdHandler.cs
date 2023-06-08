@@ -25,6 +25,7 @@ public sealed class GetEpisodeByIdHandler : ICommandHandler<GetEpisodeByIdReques
     {
         var episode = await _episodeRepository.GetQueryable()
             .AsNoTracking()
+            .Include(episode => episode.Characters)
             .ProjectTo<EpisodeResponse>(_mapper.ConfigurationProvider)
             .FirstOrDefaultAsync(episode => episode.Id == request.Id, cancellationToken: cancellationToken);
 

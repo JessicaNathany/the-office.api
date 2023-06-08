@@ -13,6 +13,8 @@ public interface IRepository<TEntity> where TEntity : Entity
     Task<TEntity?> Get(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
     Task<IEnumerable<TEntity>?> GetAll(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
     Task<IEnumerable<TEntity>> GetAll(CancellationToken cancellationToken = default);
+    Task<IPagedResult<TEntity>> GetAll(int page, int pageSize, CancellationToken cancellationToken = default);
+    Task<IPagedResult<TEntity>> GetAll(Expression<Func<TEntity, bool>> filterExpression, int page, int pageSize, CancellationToken cancellationToken = default);
     IQueryable<TEntity> GetQueryable();
     Task<int> Count(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
     Task<bool> Any(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);

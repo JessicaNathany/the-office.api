@@ -16,6 +16,4 @@ public class CharacterResponse : IMapFrom<Character>
 
     public string ImageUrl { get; set; }
     public string Job { get; set; }
-
-    public IEnumerable<EpisodeResponse> Episodes { get; set; }
 }

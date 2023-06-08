@@ -1,7 +1,9 @@
 using the_office.api.application.Common.Mappings;
 using the_office.api.application.Episodes.Handlers;
-using the_office.api.application.Episodes.Messaging.Requests;
 using the_office.api.test.Application.Common.Fakes;
+using the_office.api.test.Application.Episodes.Fakes;
+using the_office.domain.Entities;
+using the_office.domain.Errors;
 using the_office.domain.Repositories;
 
 namespace the_office.api.test.Application.Episodes.Handlers;
@@ -27,9 +29,17 @@ public class RegisterEpisodeHandlerTests
     public async Task RegisterEpisode_WhenRequestIsValid_ShouldReturnNewEpisode()
     {
         // Arrange
-        var request = new RegisterEpisodeRequest(); // TODO: Create a request using Faker
-        var fakeSeason = SeasonFaker.Create();
-        var fakerCharacters = CharacterFaker.CreateMany();
+        var request = RegisterEpisodeRequestFaker
+            .Create()
+            .Generate();
+        
+        var fakeSeason = SeasonFaker
+            .Create()
+            .Generate();
+        
+        var fakerCharacters = CharacterFaker
+            .Create()
+            .WithMany();
 
         _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, default))
             .ReturnsAsync(fakeSeason);
@@ -46,5 +56,109 @@ public class RegisterEpisodeHandlerTests
         response.Value.Name.Should().Be(request.Name);
         response.Value.Description.Should().Be(request.Description);
         response.Value.AirDate.Should().Be(request.AirDate);
+        response.Value.Characters.Should().HaveSameCount(fakerCharacters);
+        
+        _episodeRepository.Verify(r => r.Add(It.IsAny<Episode>()), Times.Once);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Once);
+    }
+    
+    [Fact]
+    public async Task RegisterEpisode_WhenInvalidSeasonCode_ShouldFailWithSeasonNotFound()
+    {
+        // Arrange
+        var request = RegisterEpisodeRequestFaker
+            .Create()
+            .Generate();
+        
+        var fakeSeason = SeasonFaker
+            .Create()
+            .WithNull();
+
+        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, default))
+            .ReturnsAsync(fakeSeason);
+        
+        // Act
+        var response = await _registerEpisodeHandler.Handle(request);
+        
+        // Assert
+        response.IsSuccess.Should().BeFalse();
+        response.IsFailure.Should().BeTrue();
+        response.Error.Code.Should().Be(EpisodeError.SeasonNotValid.Code);
+        response.Error.Message.Should().Be(EpisodeError.SeasonNotValid.Message);
+        
+        _episodeRepository.Verify(r => r.Add(It.IsAny<Episode>()), Times.Never);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Never);
+    }
+    
+    [Fact]
+    public async Task RegisterEpisode_WhenCharactersAreInvalid_ShouldFailWithCharactersNotValid()
+    {
+        // Arrange
+        var request = RegisterEpisodeRequestFaker
+            .Create()
+            .WithManyCharacters(3);
+        
+        var fakeSeason = SeasonFaker
+            .Create()
+            .Generate();
+        
+        var fakerCharacters = CharacterFaker
+            .Create()
+            .WithMany(5);
+
+        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, default))
+            .ReturnsAsync(fakeSeason);
+        
+        _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), default))
+            .ReturnsAsync(fakerCharacters);
+        
+        // Act
+        var response = await _registerEpisodeHandler.Handle(request);
+        
+        // Assert
+        response.IsSuccess.Should().BeFalse();
+        response.IsFailure.Should().BeTrue();
+        response.Error.Code.Should().Be(EpisodeError.CharactersNotValid.Code);
+        response.Error.Message.Should().Be(EpisodeError.CharactersNotValid.Message);
+        
+        _episodeRepository.Verify(r => r.Add(It.IsAny<Episode>()), Times.Never);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Never);
+    }
+    
+    [Fact]
+    public async Task RegisterEpisode_WhenHasNoCharacters_ShouldNotAddCharacters()
+    {
+        // Arrange
+        var request = RegisterEpisodeRequestFaker
+            .Create()
+            .WithNoCharacters();
+        
+        var fakeSeason = SeasonFaker
+            .Create()
+            .Generate();
+        
+        var fakerCharacters = CharacterFaker
+            .Create()
+            .WithMany();
+
+        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, default))
+            .ReturnsAsync(fakeSeason);
+        
+        _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), default))
+            .ReturnsAsync(fakerCharacters);
+        
+        // Act
+        var response = await _registerEpisodeHandler.Handle(request);
+        
+        // Assert
+        response.IsSuccess.Should().BeTrue();
+        response.IsFailure.Should().BeFalse();
+        response.Value.Name.Should().Be(request.Name);
+        response.Value.Description.Should().Be(request.Description);
+        response.Value.AirDate.Should().Be(request.AirDate);
+        
+        _characterRepository.Verify(r => r.GetAll(c => request.Characters!.Contains(c.Code), CancellationToken.None), Times.Never);
+        _episodeRepository.Verify(r => r.Add(It.IsAny<Episode>()), Times.Once);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Once);
     }
 }

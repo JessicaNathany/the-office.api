@@ -1,6 +1,8 @@
 using Bogus;
 using MockQueryable.Moq;
 using the_office.domain.Entities;
+using the_office.domain.Repositories;
+using the_office.infrastructure.Data.Pagination;
 
 namespace the_office.api.test.Application.Common.Fakes;
 
@@ -12,37 +14,30 @@ internal sealed class EpisodeFaker : Faker<Episode>
             faker.Name.FullName(),
             faker.Name.JobDescriptor(),
             faker.Date.Past(),
-            SeasonFaker.Create()
+            SeasonFaker.Create().Generate()
         ));
         
         RuleFor(episode => episode.Id, faker => faker.Database.Random.Int());
+        RuleFor(episode => episode.Code, faker => faker.Database.Random.Guid());
+
+        FinishWith((_, episode) =>
+        {
+            episode.AddCharacters(CharacterFaker.Create().WithMany());
+        });
     }
 
-    internal static Episode Create()
-    {
-        var faker = new EpisodeFaker();
-        return faker.Generate();
-    }
-    
-    internal static IEnumerable<Episode> CreateMany()
-    {
-        var faker = new EpisodeFaker();
-        return faker.Generate(100);
-    }
-    
-    internal static IQueryable<Episode> CreateQueryable()
-    {
-        var faker = new EpisodeFaker();
-        var episodes = faker.Generate(100);
+    internal static EpisodeFaker Create() => new();
 
-        return episodes.BuildMock();
-    }
+    internal IEnumerable<Episode> WithMany(int count = 10) => Generate(count);
     
-    internal static IQueryable<Episode> CreateEmptyQueryable()
-    {
-        var faker = new EpisodeFaker();
-        var episodes = faker.Generate(0);
+    internal IQueryable<Episode> AsQueryable(int count = 10) => Generate(count).BuildMock();
+    
+    internal IQueryable<Episode> AsQueryableEmpty() => Generate(0).BuildMock();
 
-        return episodes.BuildMock();
+    internal IPagedResult<Episode> AsPaged(int page = 1, int pageSize = 10, int count = 10)
+    {
+        var episodes = Generate(count).BuildMock();
+        
+        return new PagedList<Episode>(episodes, page, pageSize);
     }
 }
