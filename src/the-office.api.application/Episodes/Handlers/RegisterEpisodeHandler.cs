@@ -38,7 +38,7 @@ public sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRequ
 
         if (request.HasCharacters)
         {
-            var characters = await _characterRepository.GetAll(c => request.Characters!.Contains(c.Code), cancellationToken);
+            var characters = await _characterRepository.GetAll(character => request.Characters!.Contains(character.Code), cancellationToken);
             
             if(characters is null || characters.Count() != request.Characters!.Count())
                 return Result.Failure<EpisodeResponse>(EpisodeError.CharactersNotValid);

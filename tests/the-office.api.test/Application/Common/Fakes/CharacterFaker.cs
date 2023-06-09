@@ -17,15 +17,7 @@ internal sealed class CharacterFaker : Faker<Character>
             ));
     }
     
-    internal static Character Create()
-    {
-        var faker = new CharacterFaker();
-        return faker.Generate();
-    }
-    
-    internal static IEnumerable<Character> CreateMany()
-    {
-        var faker = new CharacterFaker();
-        return faker.Generate(10);
-    }
+    internal static CharacterFaker Create() => new();
+
+    internal List<Character> WithMany(int count = 10) => Generate(count);
 }

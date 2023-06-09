@@ -12,9 +12,8 @@ internal sealed class SeasonFaker : Faker<Season>
         ));
     }
     
-    internal static Season Create()
-    {
-        var faker = new SeasonFaker();
-        return faker.Generate();
-    }
+    
+    internal static SeasonFaker Create() => new();
+
+    internal Season? WithNull() => null;
 }
