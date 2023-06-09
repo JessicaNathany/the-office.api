@@ -31,6 +31,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\the-office.api.application\the-office.api.application.csproj" />
     <ProjectReference Include="..\..\src\the-office.domain\the-office.domain.csproj" />
+    <ProjectReference Include="..\..\src\the-office.infrastructure\the-office.infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

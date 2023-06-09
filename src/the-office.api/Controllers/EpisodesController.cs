@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
+using the_office.api.application.Common.Pagination;
 using the_office.api.application.Episodes.Messaging.Requests;
 using the_office.api.application.Episodes.Messaging.Responses;
 using the_office.api.ModelExamples;
@@ -35,6 +36,16 @@ public class EpisodesController : ApiController
     public async Task<Result<EpisodeResponse>> GetById([FromRoute] int id, CancellationToken cancellationToken)
     {
         var request = new GetEpisodeByIdRequest(id);
+            
+        return await Sender.Send(request, cancellationToken);
+    }
+    
+    [HttpGet]
+    [ProducesResponseType(typeof(PagedResult<EpisodeResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<Result<PagedResult<EpisodeResponse>>> Get([FromQuery] int? page, [FromQuery]int? pageSize, CancellationToken cancellationToken)
+    {
+        var request = new GetEpisodesRequest(page, pageSize);
             
         return await Sender.Send(request, cancellationToken);
     }

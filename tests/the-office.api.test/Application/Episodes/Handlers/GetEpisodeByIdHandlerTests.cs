@@ -26,7 +26,9 @@ public class GetEpisodeByIdHandlerTests
     public async Task GetEpisodeById_WhenEpisodeExists_ShouldReturnEpisode()
     {
         // Arrange
-        var fakeEpisodes = EpisodeFaker.CreateQueryable();
+        var fakeEpisodes = EpisodeFaker
+            .Create()
+            .AsQueryable();
 
         var episode = await fakeEpisodes.FirstOrDefaultAsync();
         var request = new GetEpisodeByIdRequest(episode!.Id);
@@ -43,6 +45,7 @@ public class GetEpisodeByIdHandlerTests
         response.Value.Name.Should().Be(episode.Name);
         response.Value.Description.Should().Be(episode.Description);
         response.Value.AirDate.Should().Be(episode.AirDate);
+        response.Value.Characters.Should().HaveSameCount(episode.Characters);
     }
     
     [Fact]
@@ -52,7 +55,10 @@ public class GetEpisodeByIdHandlerTests
         const int episodeId = 10;
         var request = new GetEpisodeByIdRequest(episodeId);
 
-        var fakeEpisodes = EpisodeFaker.CreateEmptyQueryable();
+        var fakeEpisodes = EpisodeFaker
+            .Create()
+            .AsQueryableEmpty();
+        
         _episodeRepository.Setup(repository => repository.GetQueryable())
             .Returns(fakeEpisodes);
         
