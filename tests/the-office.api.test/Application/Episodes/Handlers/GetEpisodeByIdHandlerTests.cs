@@ -11,7 +11,6 @@ namespace the_office.api.test.Application.Episodes.Handlers;
 
 public class GetEpisodeByIdHandlerTests
 {
-    private readonly AutoMocker _autoMocker;
     private readonly Mock<IEpisodeRepository> _episodeRepository = new();
     private readonly GetEpisodeByIdHandler _getEpisodeByIdHandler;
 
