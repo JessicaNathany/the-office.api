@@ -1,6 +1,5 @@
 ﻿using the_office.api.application.Characters.Messaging.Response;
 using the_office.api.application.Common.Commands;
-using the_office.domain.Entities;
 
 namespace the_office.api.application.Characters.Messaging.Requests;
 public sealed record RegisterCharacterRequest() : ICommand<CharacterResponse>
@@ -17,5 +16,5 @@ public sealed record RegisterCharacterRequest() : ICommand<CharacterResponse>
 
     public string Job { get; set; }
 
-    public List<EpisodeCharacter> Episodes { get; set; }
+    public IEnumerable<Guid> Episodes { get; set; }
 }
