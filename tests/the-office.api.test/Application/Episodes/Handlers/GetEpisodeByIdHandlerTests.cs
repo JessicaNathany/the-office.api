@@ -5,11 +5,13 @@ using the_office.domain.Repositories;
 using the_office.api.application.Episodes.Handlers;
 using the_office.api.test.Application.Common.Fakes;
 using the_office.domain.Errors;
+using Moq.AutoMock;
 
 namespace the_office.api.test.Application.Episodes.Handlers;
 
 public class GetEpisodeByIdHandlerTests
 {
+    private readonly AutoMocker _autoMocker;
     private readonly Mock<IEpisodeRepository> _episodeRepository = new();
     private readonly GetEpisodeByIdHandler _getEpisodeByIdHandler;
 

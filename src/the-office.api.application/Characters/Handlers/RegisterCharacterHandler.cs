@@ -25,13 +25,14 @@ public sealed class RegisterCharacterHandler : ICommandHandler<RegisterCharacter
     public async Task<Result<CharacterResponse>> Handle(RegisterCharacterRequest request,
         CancellationToken cancellationToken)
     {
-        var characterExist = await _characterRepository.GetByName(request.Name, request.NameActor);
+        var characterExist = await _characterRepository
+            .Any(c => c.Name.Contains(request.Name) 
+            && c.NameActor.Contains(request.NameActor), cancellationToken);
 
-        if (characterExist != null)
+        if (characterExist)
             return Result.Failure<CharacterResponse>(CharacterError.Exists);
 
-        // TODO: Need create an instance of character
-        var character = new Character();
+        var character = new Character(request.Name, request.NameActor, request.Status, request.Gender, request.ImageUrl, request.Job);
 
         await _unitOfWork.BeginTransaction();
 
@@ -40,9 +41,10 @@ public sealed class RegisterCharacterHandler : ICommandHandler<RegisterCharacter
         await _unitOfWork.SaveChangesAsync(cancellationToken);
 
         var success = await _unitOfWork.Commit(cancellationToken);
+
         if (!success)
             return Result.Failure<CharacterResponse>(CharacterError.ErrorWhenRegister);
 
-        return _mapper.Map<CharacterResponse>(character);
+        return _mapper.Map<CharacterResponse>(request);
     }
 }

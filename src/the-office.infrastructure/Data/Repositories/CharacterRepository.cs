@@ -13,9 +13,4 @@ public class CharacterRepository : Repository<Character>, ICharacterRepository
     {
         _context = context;
     }
-
-    public async Task<Character> GetByName(string personaName, string actorName)
-    {
-        return await _context.Set<Character>().AsNoTracking().FirstOrDefaultAsync(c => c.Name == personaName && c.NameActor == actorName);
-    }
 }

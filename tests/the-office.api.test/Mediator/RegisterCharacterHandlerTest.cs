@@ -1,4 +1,6 @@
 ﻿using Moq.AutoMock;
+using System.Linq.Expressions;
+using System.Threading;
 using the_office.api.application.Characters.Handlers;
 using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.application.Characters.Messaging.Response;
@@ -17,7 +19,7 @@ namespace the_office.api.test.Mediator
             _autoMocker= new AutoMocker();  
         }
 
-        [Fact]
+        [Fact] 
         public async Task ShouldBeInsertCharacter_Success() 
         {
             var character = new Character();
@@ -35,8 +37,10 @@ namespace the_office.api.test.Mediator
             var commandHandler = _autoMocker.CreateInstance<RegisterCharacterHandler>();
 
             var characterRepositoryMock = _autoMocker.GetMock<ICharacterRepository>();
-            characterRepositoryMock.Setup(character => character.GetByName("Gabe", "Zach Woods"))
-                .ReturnsAsync(character);
+            
+            characterRepositoryMock.Setup(character => character.Any(
+                    It.IsAny<Expression<Func<Character, bool>>>(), CancellationToken.None)).
+                ReturnsAsync(false);
 
             var expectedResponse = new CharacterResponse()
             {
@@ -50,11 +54,16 @@ namespace the_office.api.test.Mediator
 
             var mockMapper = _autoMocker.GetMock<IMapper>();
 
-            mockMapper.Setup(mapper => mapper.Map<CharacterResponse>(It.Is<RegisterCharacterRequest>(c => c == request)))
+            mockMapper.Setup(mapper => mapper
+            .Map<CharacterResponse>(It.Is<RegisterCharacterRequest>(c => c == request)))
             .Returns(expectedResponse);
 
+            var unitOfWorkMock = _autoMocker.GetMock<IUnitOfWork>();
+
+            unitOfWorkMock.Setup(uow => uow.Commit(It.IsAny<CancellationToken>())).ReturnsAsync(true);
+
             //Action
-            var result = await commandHandler.Handle(request, It.IsAny<CancellationToken>());
+            var result = await commandHandler.Handle(request, CancellationToken.None);
 
             // Assert
             Assert.True(result.IsSuccess);
@@ -87,8 +96,9 @@ namespace the_office.api.test.Mediator
             var commandHandler = _autoMocker.CreateInstance<RegisterCharacterHandler>();
 
             var characterRepositoryMock = _autoMocker.GetMock<ICharacterRepository>();
-            characterRepositoryMock.Setup(character => character.GetByName(request.Name, request.NameActor)).
-                ReturnsAsync(character);
+            characterRepositoryMock.Setup(character => character.Any(
+                It.IsAny<Expression<Func<Character, bool>>>(), It.IsAny<CancellationToken>())).
+                ReturnsAsync(true);
 
             //Action
             var result = await commandHandler.Handle(request, It.IsAny<CancellationToken>());
