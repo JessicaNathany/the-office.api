@@ -30,6 +30,8 @@ internal sealed class EpisodeFaker : Faker<Episode>
 
     internal IEnumerable<Episode> WithMany(int count = 10) => Generate(count);
     
+    internal Episode? WithNull() => null;
+    
     internal IQueryable<Episode> AsQueryable(int count = 10) => Generate(count).BuildMock();
     
     internal IQueryable<Episode> AsQueryableEmpty() => Generate(0).BuildMock();

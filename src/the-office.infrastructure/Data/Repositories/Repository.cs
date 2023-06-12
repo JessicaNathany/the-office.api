@@ -21,12 +21,12 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         return await _context.Set<TEntity>().FindAsync(new object?[] { predicate }, cancellationToken: cancellationToken);
     }
     
-    public async Task<IEnumerable<TEntity>?> GetAll(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
+    public async Task<List<TEntity>?> GetAll(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
     {
         return await _context.Set<TEntity>().AsNoTracking().Where(predicate).ToListAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<TEntity>> GetAll(CancellationToken cancellationToken = default)
+    public async Task<List<TEntity>> GetAll(CancellationToken cancellationToken = default)
     {
         return await _context.Set<TEntity>().ToListAsync(cancellationToken);
     }

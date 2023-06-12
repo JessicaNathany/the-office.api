@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using the_office.api.application.Characters.Messaging.Response;
+﻿using the_office.api.application.Characters.Messaging.Response;
 using the_office.api.application.Common.Mappings;
 using the_office.domain.Entities;
 
