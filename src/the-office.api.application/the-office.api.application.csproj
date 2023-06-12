@@ -12,7 +12,7 @@
     <Folder Include="Phrases\Handler\" />
     <Folder Include="Phrases\Responses\" />
     <Folder Include="Phrases\Requests\" />
-    <Folder Include="Season\Messaging\" />
+    <Folder Include="Seasons\Messaging\" />
   </ItemGroup>
 
   <ItemGroup>

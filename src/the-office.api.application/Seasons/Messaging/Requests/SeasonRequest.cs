@@ -1,7 +1,7 @@
 ﻿using the_office.api.application.Common.Commands;
-using the_office.api.application.Season.Messaging.Responses;
+using the_office.api.application.Seasons.Messaging.Responses;
 
-namespace the_office.api.application.Season.Messaging.Requests
+namespace the_office.api.application.Seasons.Messaging.Requests
 {
     public sealed record SeasonRequest() : ICommand<List<SeasonResponse>>
     {
