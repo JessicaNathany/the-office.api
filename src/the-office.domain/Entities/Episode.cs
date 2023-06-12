@@ -47,4 +47,26 @@ public sealed class Episode : Entity
     public Season Season { get; set; }
 
     public void AddCharacters(IEnumerable<Character> characters) => _characters.AddRange(characters);
+    
+    public void ChangeInfo(string name, string description, DateTime airDate, Season season)
+    {
+        Name = name;
+        Description = description;
+        AirDate = airDate;
+        Season = season;
+    }
+
+    public void ChangeCharacters(IEnumerable<Character> characters)
+    {
+        _characters.Clear();
+        _characters.AddRange(characters);
+    }
+
+    public void RemoveAllCharacters()
+    {
+        if(!_characters.Any())
+            return;
+        
+        _characters.Clear();
+    }
 }

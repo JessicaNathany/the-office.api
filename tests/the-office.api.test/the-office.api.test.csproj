@@ -44,8 +44,4 @@
     <Folder Include="Application\Common\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Utils\" />
-  </ItemGroup>
-
 </Project>
