@@ -41,7 +41,7 @@ public class RegisterEpisodeHandlerTests
             .Create()
             .WithMany();
 
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, default))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
         _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), default))
@@ -74,7 +74,7 @@ public class RegisterEpisodeHandlerTests
             .Create()
             .WithNull();
 
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, default))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
         // Act
@@ -106,7 +106,7 @@ public class RegisterEpisodeHandlerTests
             .Create()
             .WithMany(5);
 
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, default))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
         _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), default))
@@ -141,10 +141,10 @@ public class RegisterEpisodeHandlerTests
             .Create()
             .WithMany();
 
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, default))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
-        _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), default))
+        _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
             .ReturnsAsync(fakerCharacters);
         
         // Act

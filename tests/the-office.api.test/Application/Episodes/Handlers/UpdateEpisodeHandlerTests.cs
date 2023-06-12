@@ -48,7 +48,7 @@ public class UpdateEpisodeHandlerTests
         _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
         _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
@@ -81,7 +81,7 @@ public class UpdateEpisodeHandlerTests
         _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
         _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
@@ -123,7 +123,7 @@ public class UpdateEpisodeHandlerTests
         _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
         _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
@@ -165,7 +165,7 @@ public class UpdateEpisodeHandlerTests
         _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
         _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
@@ -203,7 +203,7 @@ public class UpdateEpisodeHandlerTests
         _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.GetByCode(request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
             .ReturnsAsync(fakeSeason);
         
         // Act

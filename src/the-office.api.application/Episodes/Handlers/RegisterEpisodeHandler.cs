@@ -29,8 +29,7 @@ public sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRequ
 
     public async Task<Result<EpisodeResponse>> Handle(RegisterEpisodeRequest request, CancellationToken cancellationToken = default)
     {
-        var season = await _seasonRepository.GetByCode(request.SeasonCode, cancellationToken);
-
+        var season = await _seasonRepository.Get(season => season.Code == request.SeasonCode, cancellationToken);
         if (season is null)
             return Result.Failure<EpisodeResponse>(EpisodeError.SeasonNotValid);
         

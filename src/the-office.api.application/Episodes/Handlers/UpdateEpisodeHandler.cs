@@ -32,7 +32,7 @@ public sealed class UpdateEpisodeHandler : ICommandHandler<UpdateEpisodeRequest,
         if (episode is null)
             return Result.Failure<EpisodeResponse>(EpisodeError.NotFound);
         
-        var season = await _seasonRepository.GetByCode(request.SeasonCode, cancellationToken);
+        var season = await _seasonRepository.Get(season => season.Code == request.SeasonCode, cancellationToken);
         if (season is null)
             return Result.Failure<EpisodeResponse>(EpisodeError.SeasonNotValid);
 

@@ -50,12 +50,6 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         return await _context.Set<TEntity>().FindAsync(new object?[] { id }, cancellationToken: cancellationToken);
     }
         
-    public async Task<TEntity?> GetByCode(Guid code, CancellationToken cancellationToken = default)
-    {
-        return await _context.Set<TEntity>()
-            .FirstOrDefaultAsync(entity => entity.Code == code, cancellationToken: cancellationToken);
-    }
-        
     public IQueryable<TEntity> GetQueryable()
     {
         return _context.Set<TEntity>();
