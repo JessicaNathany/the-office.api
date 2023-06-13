@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
 using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.application.Characters.Messaging.Response;
+using the_office.api.application.Episodes.Messaging.Requests;
+using the_office.api.application.Episodes.Messaging.Responses;
 using the_office.api.ModelExamples;
 using the_office.domain.Response;
 using the_office.domain.Shared;
@@ -24,8 +26,7 @@ public class CharactersController : ApiController
     public async Task<Result<CharacterResponse>> GetById([FromRoute] int id, CancellationToken cancellationToken)
     {
         var request = new GetCharacterByIdRequest(id);
-
-        return await Sender.Send(request, cancellationToken); // to continue...
+        return await Sender.Send(request, cancellationToken);
     }
 
     [HttpGet]
@@ -36,10 +37,9 @@ public class CharactersController : ApiController
     }
 
     [HttpPost]
-    [ProducesResponseType(typeof(CharacterResponse), StatusCodes.Status422UnprocessableEntity)]
-    [SwaggerResponseExample(StatusCodes.Status422UnprocessableEntity, typeof(ValidationResponseModelExamples))]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ObjectResponse), StatusCodes.Status201Created)]
+    [SwaggerResponseExample(StatusCodes.Status422UnprocessableEntity, typeof(ValidationResponseModelExamples))]
     [SwaggerResponseExample(StatusCodes.Status201Created, typeof(CharacterModelExample))]
     public async Task<Result<CharacterResponse>> RegisterAsync([FromBody] RegisterCharacterRequest request)
     {
