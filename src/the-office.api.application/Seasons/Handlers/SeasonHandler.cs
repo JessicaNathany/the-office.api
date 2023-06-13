@@ -1,10 +1,10 @@
 ﻿using the_office.api.application.Common.Commands;
-using the_office.api.application.Season.Messaging.Requests;
-using the_office.api.application.Season.Messaging.Responses;
+using the_office.api.application.Seasons.Messaging.Requests;
+using the_office.api.application.Seasons.Messaging.Responses;
 using the_office.domain.Repositories;
 using the_office.domain.Shared;
 
-namespace the_office.api.application.Season.Handlers;
+namespace the_office.api.application.Seasons.Handlers;
 
 internal sealed class SeasonHandler : ICommandHandler<SeasonRequest, List<SeasonResponse>>
 {

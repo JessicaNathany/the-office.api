@@ -21,12 +21,12 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
         return await _context.Set<TEntity>().FindAsync(new object?[] { predicate }, cancellationToken: cancellationToken);
     }
     
-    public async Task<IEnumerable<TEntity>?> GetAll(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
+    public async Task<List<TEntity>?> GetAll(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default)
     {
         return await _context.Set<TEntity>().AsNoTracking().Where(predicate).ToListAsync(cancellationToken);
     }
 
-    public async Task<IEnumerable<TEntity>> GetAll(CancellationToken cancellationToken = default)
+    public async Task<List<TEntity>> GetAll(CancellationToken cancellationToken = default)
     {
         return await _context.Set<TEntity>().ToListAsync(cancellationToken);
     }
@@ -48,12 +48,6 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
     public async Task<TEntity?> GetById(int id, CancellationToken cancellationToken = default)
     {
         return await _context.Set<TEntity>().FindAsync(new object?[] { id }, cancellationToken: cancellationToken);
-    }
-        
-    public async Task<TEntity?> GetByCode(Guid code, CancellationToken cancellationToken = default)
-    {
-        return await _context.Set<TEntity>()
-            .FirstOrDefaultAsync(entity => entity.Code == code, cancellationToken: cancellationToken);
     }
         
     public IQueryable<TEntity> GetQueryable()

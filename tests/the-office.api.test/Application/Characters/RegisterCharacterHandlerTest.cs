@@ -1,13 +1,14 @@
-﻿using Moq.AutoMock;
+﻿using FizzWare.NBuilder;
+using Moq.AutoMock;
 using System.Linq.Expressions;
-using System.Threading;
 using the_office.api.application.Characters.Handlers;
 using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.application.Characters.Messaging.Response;
+using the_office.api.test.Application.Episodes.Fakes;
 using the_office.domain.Entities;
 using the_office.domain.Repositories;
 
-namespace the_office.api.test.Mediator
+namespace the_office.api.test.Application.Characters
 {
     [Collection("the-office")]
     public class RegisterCharacterHandlerTest
@@ -16,41 +17,32 @@ namespace the_office.api.test.Mediator
 
         public RegisterCharacterHandlerTest()
         {
-            _autoMocker= new AutoMocker();  
+            _autoMocker = new AutoMocker();
         }
 
-        [Fact] 
-        public async Task ShouldBeInsertCharacter_Success() 
+        [Fact]
+        public async Task ShouldBeInsertCharacter_Success()
         {
             var character = new Character();
             character = null;
 
-            var request = new RegisterCharacterRequest
-            {
-                Gender = "Male",
-                ImageUrl = "https://theoffice-uploads.s3.us-east-2.amazonaws.com/gabe.jpg",
-                Name = "Gabe",
-                NameActor = "Zach Woods",
-                Job = "Assistent"
-            };
+            var request = Builder<RegisterCharacterRequest>
+                .CreateNew().With(x => x.Gender = "Male").Build();
 
             var commandHandler = _autoMocker.CreateInstance<RegisterCharacterHandler>();
 
             var characterRepositoryMock = _autoMocker.GetMock<ICharacterRepository>();
-            
+
             characterRepositoryMock.Setup(character => character.Any(
                     It.IsAny<Expression<Func<Character, bool>>>(), CancellationToken.None)).
                 ReturnsAsync(false);
 
-            var expectedResponse = new CharacterResponse()
-            {
-                Job = "Assistent",
-                ImageUrl = "https://theoffice-uploads.s3.us-east-2.amazonaws.com/gabe.jpg",
-                Gender = "Male",
-                Name = "Gabe",
-                NameActor = "Zach Woods",
-                Status = true
-            };
+            var expectedResponse = Builder<CharacterResponse>
+               .CreateNew()
+               .With(x => x.Gender = "Male")
+               .With(x => x.ImageUrl = "https://theoffice-uploads.s3.us-east-2.amazonaws.com/gabe.jpg")
+               .With(x=> x.Name = "Gabe")
+               .Build();
 
             var mockMapper = _autoMocker.GetMock<IMapper>();
 
@@ -73,25 +65,13 @@ namespace the_office.api.test.Mediator
         [Fact]
         public async Task FailureInsertCharacter_CharacterExist_Success()
         {
-            var character = new Character()
-            {
-                Id = 1,
-                Code = new Guid(),
-                Gender = "Male",
-                Job = "Assistent",
-                Name = "Gabe",
-                NameActor = "Zach Woods",
-                ImageUrl = "https://theoffice-uploads.s3.us-east-2.amazonaws.com/gabe.jpg",
-                Status = true
-            };
+            var character = Builder<Character>.CreateNew().With(x => x.Gender = "Male").Build();
 
-            var request = new RegisterCharacterRequest
-            {
-                Gender = "Male",
-                ImageUrl = "https://theoffice-uploads.s3.us-east-2.amazonaws.com/gabe.jpg",
-                Name = "Gabe",
-                NameActor = "Zach Woods",
-            };
+            var request = Builder<RegisterCharacterRequest>
+                .CreateNew()
+                .With(x => x.Gender = "Male")
+                .With(x => x.Name = "Gabe")
+                .Build();
 
             var commandHandler = _autoMocker.CreateInstance<RegisterCharacterHandler>();
 
