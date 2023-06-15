@@ -4,6 +4,10 @@ namespace the_office.domain.Entities;
 
 public class Season : Entity
 {
+    public Season()
+    {
+        
+    }
     public Season(int number, string title, int totalEpisodes, DateTime releaseDate, string summary)
     {
         Number = number;

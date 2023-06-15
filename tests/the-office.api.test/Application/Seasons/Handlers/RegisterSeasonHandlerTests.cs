@@ -6,7 +6,7 @@ using the_office.domain.Entities;
 using the_office.domain.Errors;
 using the_office.domain.Repositories;
 
-namespace the_office.api.test.Application.Seasons;
+namespace the_office.api.test.Application.Seasons.Handlers;
 
 public sealed class RegisterSeasonHandlerTests : BaseTest
 {
