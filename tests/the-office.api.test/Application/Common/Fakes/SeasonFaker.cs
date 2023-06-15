@@ -8,7 +8,11 @@ internal sealed class SeasonFaker : Faker<Season>
     private SeasonFaker()
     {
         CustomInstantiator(faker => new Season(
-            faker.Name.FullName()
+            faker.Random.Int(),
+            faker.Name.Prefix(),
+            faker.Random.Int(),
+            faker.Date.Past(),
+            faker.Lorem.Lines()
         ));
     }
     
