@@ -181,10 +181,26 @@ namespace the_office.infrastructure.Data.Migrations
                     b.Property<Guid>("Code")
                         .HasColumnType("uuid");
 
-                    b.Property<string>("Description")
+                    b.Property<int>("Number")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("ReleaseDate")
+                        .HasColumnType("date");
+
+                    b.Property<string>("Summary")
+                        .IsRequired()
+                        .HasMaxLength(750)
+                        .HasColumnType("character varying(750)");
+
+                    b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
+
+                    b.Property<int>("TotalEpisodes")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasDefaultValue(0);
 
                     b.HasKey("Id");
 

@@ -13,8 +13,23 @@ public class SeasonMapping : IEntityTypeConfiguration<Season>
         builder.HasIndex(b => b.Code)
             .IsUnique();
 
-        builder.Property(b => b.Description)
+        builder.Property(b => b.Number)
+            .IsRequired();
+
+        builder.Property(b => b.Title)
             .HasMaxLength(100)
+            .IsRequired();
+
+        builder.Property(b => b.TotalEpisodes)
+            .HasDefaultValue(0)
+            .IsRequired();
+
+        builder.Property(b => b.Summary)
+            .HasMaxLength(750)
+            .IsRequired();
+
+        builder.Property(b => b.ReleaseDate)
+            .HasColumnType("date")
             .IsRequired();
 
         builder.HasMany(season => season.Episodes)
