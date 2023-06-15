@@ -4,23 +4,47 @@ namespace the_office.domain.Entities;
 
 public class Season : Entity
 {
-    public Season(string description)
+    public Season(int number, string title, int totalEpisodes, DateTime releaseDate, string summary)
     {
-        Description = description;
+        Number = number;
+        Title = title;
+        TotalEpisodes = totalEpisodes;
+        ReleaseDate = releaseDate;
+        Summary = summary;
     }
-        
-    /// <summary>
-    /// Description of the Season
-    /// </summary>
-    public string Description { get; set; }
 
     /// <summary>
-    /// List episodes of the Season
+    /// Season number
+    /// </summary>
+    public int Number { get; set; }
+
+    /// <summary>
+    /// Season title
+    /// </summary>
+    public string Title { get; set; }
+
+    /// <summary>
+    /// Number of episodes in the season
+    /// </summary>
+    public int TotalEpisodes { get; set; }
+
+    /// <summary>
+    /// Release date of the season
+    /// </summary>
+    public DateTime ReleaseDate { get; set; }
+
+    /// <summary>
+    /// Description or summary of the season
+    /// </summary>
+    public string Summary { get; set; }
+
+    /// <summary>
+    /// List episodes in the season
     /// </summary>
     public IEnumerable<Episode> Episodes { get; set; }
 
     /// <summary>
-    /// List characters of the Season
+    /// List characters in the season
     /// </summary>
     public IEnumerable<Character> Characters { get; set; }
 }
