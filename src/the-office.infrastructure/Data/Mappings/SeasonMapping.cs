@@ -13,7 +13,7 @@ public class SeasonMapping : IEntityTypeConfiguration<Season>
         builder.HasIndex(b => b.Code)
             .IsUnique();
 
-        builder.Property(b => b.Description)
+        builder.Property(b => b.Summary)
             .HasMaxLength(100)
             .IsRequired();
 
