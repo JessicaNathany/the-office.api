@@ -8,7 +8,7 @@ using the_office.api.test.Application.Episodes.Fakes;
 using the_office.domain.Entities;
 using the_office.domain.Repositories;
 
-namespace the_office.api.test.Application.Characters
+namespace the_office.api.test.Application.Characters.Handlers
 {
     [Collection("the-office")]
     public class RegisterCharacterHandlerTest
@@ -41,7 +41,7 @@ namespace the_office.api.test.Application.Characters
                .CreateNew()
                .With(x => x.Gender = "Male")
                .With(x => x.ImageUrl = "https://theoffice-uploads.s3.us-east-2.amazonaws.com/gabe.jpg")
-               .With(x=> x.Name = "Gabe")
+               .With(x => x.Name = "Gabe")
                .Build();
 
             var mockMapper = _autoMocker.GetMock<IMapper>();

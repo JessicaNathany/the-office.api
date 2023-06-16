@@ -3,8 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Swashbuckle.AspNetCore.Filters;
 using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.application.Characters.Messaging.Response;
-using the_office.api.application.Episodes.Messaging.Requests;
-using the_office.api.application.Episodes.Messaging.Responses;
+using the_office.api.application.Common.Pagination;
 using the_office.api.ModelExamples;
 using the_office.domain.Response;
 using the_office.domain.Shared;
@@ -29,11 +28,23 @@ public class CharactersController : ApiController
         return await Sender.Send(request, cancellationToken);
     }
 
-    [HttpGet]
-    [Route("GetAll")]
-    public ActionResult Index()
+
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(typeof(CharacterResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<Result<CharacterResponse>> Update([FromRoute] int id, [FromBody] UpdateCharacterRequest request)
     {
         throw new NotImplementedException();
+    }
+
+    [HttpGet]
+    [ProducesResponseType(typeof(PagedResult<CharacterResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<Result<PagedResult<CharacterResponse>>> GetAll([FromQuery] int? page, [FromQuery] int? pageSize, CancellationToken cancellationToken)
+    {
+        var request = new GetCharactersRequest(page, pageSize);
+        return await Sender.Send(request, cancellationToken);
     }
 
     [HttpPost]

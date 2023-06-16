@@ -9,6 +9,7 @@ using Moq.AutoMock;
 
 namespace the_office.api.test.Application.Episodes.Handlers;
 
+[Collection("the-office")]
 public class GetEpisodeByIdHandlerTests
 {
     private readonly Mock<IEpisodeRepository> _episodeRepository = new();
