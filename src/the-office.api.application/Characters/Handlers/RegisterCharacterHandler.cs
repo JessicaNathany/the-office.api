@@ -36,14 +36,22 @@ public sealed class RegisterCharacterHandler : ICommandHandler<RegisterCharacter
 
         await _unitOfWork.BeginTransaction();
 
-        _characterRepository.Add(character);
+        try
+        {
+            _characterRepository.Add(character);
 
-        await _unitOfWork.SaveChangesAsync(cancellationToken);
+            await _unitOfWork.SaveChangesAsync(cancellationToken);
 
-        var success = await _unitOfWork.Commit(cancellationToken);
+            var success = await _unitOfWork.Commit(cancellationToken);
 
-        if (!success)
-            return Result.Failure<CharacterResponse>(CharacterError.ErrorWhenRegister);
+            if (!success)
+                return Result.Failure<CharacterResponse>(CharacterError.ErrorWhenRegister);
+        }
+        catch (Exception)
+        {
+            await _unitOfWork.Rollback(cancellationToken);
+            throw;
+        }
 
         return _mapper.Map<CharacterResponse>(request);
     }

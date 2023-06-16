@@ -8,7 +8,6 @@
 
   <ItemGroup>
     <Folder Include="Common\Helpers\" />
-    <Folder Include="Episodes\Messaging\" />
     <Folder Include="Phrases\Handler\" />
     <Folder Include="Phrases\Responses\" />
     <Folder Include="Phrases\Requests\" />
