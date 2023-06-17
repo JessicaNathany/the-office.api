@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using the_office.api.application.Common.Pagination;
 using the_office.api.application.Seasons.Messaging.Requests;
 using the_office.api.application.Seasons.Messaging.Responses;
 using the_office.domain.Shared;
@@ -30,6 +31,15 @@ public class SeasonsController : ApiController
     public async Task<Result<SeasonResponse>> GetById([FromRoute] int id, CancellationToken cancellationToken)
     {
         var request = new GetSeasonByIdRequest(id);
+        return await Sender.Send(request, cancellationToken);
+    }
+    
+    [HttpGet]
+    [ProducesResponseType(typeof(PagedResult<SeasonResponse>), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<Result<PagedResult<SeasonResponse>>> Get([FromQuery] int? page, [FromQuery]int? pageSize, CancellationToken cancellationToken)
+    {
+        var request = new GetSeasonsRequest(page, pageSize);
         return await Sender.Send(request, cancellationToken);
     }
 }
