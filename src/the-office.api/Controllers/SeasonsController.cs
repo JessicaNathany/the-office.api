@@ -42,4 +42,14 @@ public class SeasonsController : ApiController
         var request = new GetSeasonsRequest(page, pageSize);
         return await Sender.Send(request, cancellationToken);
     }
+    
+    [HttpPut("{id:int}")]
+    [ProducesResponseType(typeof(SeasonResponse), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    public async Task<Result<SeasonResponse>> Update([FromRoute] int id, [FromBody] UpdateSeasonRequest request)
+    {
+        request.Id = id;
+        return await Sender.Send(request);
+    }
 }
