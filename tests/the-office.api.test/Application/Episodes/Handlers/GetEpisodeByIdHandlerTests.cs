@@ -1,35 +1,30 @@
+using AutoFixture;
 using Microsoft.EntityFrameworkCore;
-using the_office.api.application.Common.Mappings;
+using MockQueryable.Moq;
 using the_office.api.application.Episodes.Messaging.Requests;
 using the_office.domain.Repositories;
 using the_office.api.application.Episodes.Handlers;
-using the_office.api.test.Application.Common.Fakes;
 using the_office.domain.Errors;
-using Moq.AutoMock;
+using the_office.domain.Entities;
 
 namespace the_office.api.test.Application.Episodes.Handlers;
 
 [Collection("the-office")]
-public class GetEpisodeByIdHandlerTests
+public class GetEpisodeByIdHandlerTests : BaseTest
 {
     private readonly Mock<IEpisodeRepository> _episodeRepository = new();
     private readonly GetEpisodeByIdHandler _getEpisodeByIdHandler;
 
     public GetEpisodeByIdHandlerTests()
     {
-        IConfigurationProvider configuration = new MapperConfiguration(config => config.AddProfile<MappingProfile>());
-        var mapper = configuration.CreateMapper();
-        _getEpisodeByIdHandler = new GetEpisodeByIdHandler(_episodeRepository.Object, mapper);
+        _getEpisodeByIdHandler = new GetEpisodeByIdHandler(_episodeRepository.Object, Mapper);
     }
     
     [Fact]
     public async Task GetEpisodeById_WhenEpisodeExists_ShouldReturnEpisode()
     {
         // Arrange
-        var fakeEpisodes = EpisodeFaker
-            .Create()
-            .AsQueryable();
-
+        var fakeEpisodes = Fixture.CreateMany<Episode>().BuildMock();
         var episode = await fakeEpisodes.FirstOrDefaultAsync();
         var request = new GetEpisodeByIdRequest(episode!.Id);
 
@@ -54,10 +49,7 @@ public class GetEpisodeByIdHandlerTests
         // Arrange
         const int episodeId = 10;
         var request = new GetEpisodeByIdRequest(episodeId);
-
-        var fakeEpisodes = EpisodeFaker
-            .Create()
-            .AsQueryableEmpty();
+        var fakeEpisodes = Fixture.CreateMany<Episode>(0).BuildMock();
         
         _episodeRepository.Setup(repository => repository.GetQueryable())
             .Returns(fakeEpisodes);

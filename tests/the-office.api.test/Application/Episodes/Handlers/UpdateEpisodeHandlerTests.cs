@@ -1,7 +1,6 @@
-using the_office.api.application.Common.Mappings;
+using AutoFixture;
 using the_office.api.application.Episodes.Handlers;
-using the_office.api.test.Application.Common.Fakes;
-using the_office.api.test.Application.Episodes.Fakes;
+using the_office.api.application.Episodes.Messaging.Requests;
 using the_office.domain.Entities;
 using the_office.domain.Errors;
 using the_office.domain.Repositories;
@@ -9,7 +8,7 @@ using the_office.domain.Repositories;
 namespace the_office.api.test.Application.Episodes.Handlers;
 
 [Collection("the-office")]
-public class UpdateEpisodeHandlerTests
+public class UpdateEpisodeHandlerTests : BaseTest
 {
     private readonly Mock<IEpisodeRepository> _episodeRepository = new();
     private readonly Mock<ISeasonRepository> _seasonRepository = new();
@@ -19,40 +18,26 @@ public class UpdateEpisodeHandlerTests
 
     public UpdateEpisodeHandlerTests()
     {
-        IConfigurationProvider configuration = new MapperConfiguration(configure => configure.AddProfile<MappingProfile>());
-        var mapper = configuration.CreateMapper();
-
         _updateEpisodeHandler = new UpdateEpisodeHandler(_episodeRepository.Object, _seasonRepository.Object,
-            _characterRepository.Object, _unitOfWork.Object, mapper);
+            _characterRepository.Object, _unitOfWork.Object, Mapper);
     }
 
     [Fact]
     public async Task UpdateEpisode_WhenRequestIsValid_ShouldReturnUpdatedEpisode()
     {
         // Arrange
-        var request = UpdateEpisodeRequestFaker
-            .Create()
-            .Generate();
+        var request = Fixture.Create<UpdateEpisodeRequest>();
+        var fakeSeason = Fixture.Create<Season>();
+        var fakerCharacters = Fixture.CreateMany<Character>().ToList();
+        var episode = Fixture.Create<Episode>();
         
-        var fakeSeason = SeasonFaker
-            .Create()
-            .Generate();
-        
-        var fakerCharacters = CharacterFaker
-            .Create()
-            .WithMany();
-
-        var episode = EpisodeFaker
-            .Create().
-            Generate();
-        
-        _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
+        _episodeRepository.Setup(repository => repository.GetById(request.Id, default))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Number == request.SeasonNumber, default))
             .ReturnsAsync(fakeSeason);
         
-        _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
+        _characterRepository.Setup(repository => repository.GetAll(c =>request.CharacterIds!.Contains(c.Id), default))
             .ReturnsAsync(fakerCharacters);
         
         // Act
@@ -67,25 +52,25 @@ public class UpdateEpisodeHandlerTests
         response.Value.Characters.Should().HaveSameCount(fakerCharacters);
         
         _episodeRepository.Verify(r => r.Update(It.IsAny<Episode>()), Times.Once);
-        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Once);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(default), Times.Once);
     }
     
     [Fact]
     public async Task UpdateEpisode_WhenEpisodeIsNotFound_ShouldFailWithEpisodeNotFound()
     {
         // Arrange
-        var request = UpdateEpisodeRequestFaker.Create().Generate();
-        var fakeSeason = SeasonFaker.Create().Generate();
-        var fakerCharacters = CharacterFaker.Create().WithMany();
-        var episode = EpisodeFaker.Create().WithNull();
+        var request = Fixture.Create<UpdateEpisodeRequest>();
+        var fakeSeason = Fixture.Create<Season>();
+        var fakerCharacters = Fixture.CreateMany<Character>().ToList();
+        Episode? episode = null;
         
-        _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
+        _episodeRepository.Setup(repository => repository.GetById(request.Id, default))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Number == request.SeasonNumber, default))
             .ReturnsAsync(fakeSeason);
         
-        _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
+        _characterRepository.Setup(repository => repository.GetAll(c =>request.CharacterIds!.Contains(c.Id), default))
             .ReturnsAsync(fakerCharacters);
         
         // Act
@@ -98,36 +83,25 @@ public class UpdateEpisodeHandlerTests
         response.Error.Message.Should().Be(EpisodeError.NotFound.Message);
         
         _episodeRepository.Verify(r => r.Update(It.IsAny<Episode>()), Times.Never);
-        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Never);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(default), Times.Never);
     }
     
     [Fact]
     public async Task UpdateEpisode_WhenInvalidSeasonCode_ShouldFailWithSeasonNotFound()
     {
         // Arrange
-        var request = UpdateEpisodeRequestFaker
-            .Create()
-            .Generate();
+        var request = Fixture.Create<UpdateEpisodeRequest>();
+        var fakerCharacters = Fixture.CreateMany<Character>().ToList();
+        var episode = Fixture.Create<Episode>();
+        Season? fakeSeason = null;
         
-        var fakeSeason = SeasonFaker
-            .Create()
-            .WithNull();
-        
-        var fakerCharacters = CharacterFaker
-            .Create()
-            .WithMany();
-
-        var episode = EpisodeFaker
-            .Create().
-            Generate();
-        
-        _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
+        _episodeRepository.Setup(repository => repository.GetById(request.Id, default))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Number == request.SeasonNumber, default))
             .ReturnsAsync(fakeSeason);
         
-        _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
+        _characterRepository.Setup(repository => repository.GetAll(c =>request.CharacterIds!.Contains(c.Id), default))
             .ReturnsAsync(fakerCharacters);
         
         // Act
@@ -140,36 +114,28 @@ public class UpdateEpisodeHandlerTests
         response.Error.Message.Should().Be(EpisodeError.SeasonNotValid.Message);
         
         _episodeRepository.Verify(r => r.Update(It.IsAny<Episode>()), Times.Never);
-        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Never);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(default), Times.Never);
     }
     
     [Fact]
     public async Task UpdateEpisode_WhenCharactersAreInvalid_ShouldFailWithCharactersNotValid()
     {
         // Arrange
-        var request = UpdateEpisodeRequestFaker
-            .Create()
-            .WithManyCharacters(3);
+        var request = Fixture.Build<UpdateEpisodeRequest>()
+            .With(r => r.CharacterIds, Fixture.CreateMany<int>(10).ToList())
+            .Create();
         
-        var fakeSeason = SeasonFaker
-            .Create()
-            .Generate();
+        var fakeSeason = Fixture.Create<Season>();
+        var fakerCharacters = Fixture.CreateMany<Character>(5).ToList();
+        var episode = Fixture.Create<Episode>();
         
-        var fakerCharacters = CharacterFaker
-            .Create()
-            .WithMany(5);
-
-        var episode = EpisodeFaker
-            .Create().
-            Generate();
-        
-        _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
+        _episodeRepository.Setup(repository => repository.GetById(request.Id, default))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Number == request.SeasonNumber, default))
             .ReturnsAsync(fakeSeason);
         
-        _characterRepository.Setup(repository => repository.GetAll(c =>request.Characters!.Contains(c.Code), CancellationToken.None))
+        _characterRepository.Setup(repository => repository.GetAll(c =>request.CharacterIds!.Contains(c.Id), default))
             .ReturnsAsync(fakerCharacters);
         
         // Act
@@ -182,29 +148,24 @@ public class UpdateEpisodeHandlerTests
         response.Error.Message.Should().Be(EpisodeError.CharactersNotValid.Message);
         
         _episodeRepository.Verify(r => r.Update(It.IsAny<Episode>()), Times.Never);
-        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Never);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(default), Times.Never);
     }
     
     [Fact]
     public async Task UpdateEpisode_WhenHasNoCharacters_ShouldReturnEpisodeWithoutCharacters()
     {
         // Arrange
-        var request = UpdateEpisodeRequestFaker
-            .Create()
-            .WithNoCharacters();
+        var request = Fixture.Build<UpdateEpisodeRequest>()
+            .Without(r => r.CharacterIds)
+            .Create();
+
+        var fakeSeason = Fixture.Create<Season>();
+        var episode = Fixture.Create<Episode>();
         
-        var fakeSeason = SeasonFaker
-            .Create()
-            .Generate();
-        
-        var episode = EpisodeFaker
-            .Create().
-            Generate();
-        
-        _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
+        _episodeRepository.Setup(repository => repository.GetById(request.Id, default))
             .ReturnsAsync(episode);
         
-        _seasonRepository.Setup(repository => repository.Get(season => season.Code == request.SeasonCode, CancellationToken.None))
+        _seasonRepository.Setup(repository => repository.Get(season => season.Number == request.SeasonNumber, default))
             .ReturnsAsync(fakeSeason);
         
         // Act
@@ -218,8 +179,8 @@ public class UpdateEpisodeHandlerTests
         response.Value.AirDate.Should().Be(request.AirDate);
         response.Value.Characters.Should().BeEmpty();
         
-        _characterRepository.Verify(r => r.GetAll(c => request.Characters!.Contains(c.Code), CancellationToken.None), Times.Never);
+        _characterRepository.Verify(r => r.GetAll(c => request.CharacterIds!.Contains(c.Id), default), Times.Never);
         _episodeRepository.Verify(r => r.Update(It.IsAny<Episode>()), Times.Once);
-        _unitOfWork.Verify(u => u.SaveChangesAsync(CancellationToken.None), Times.Once);
+        _unitOfWork.Verify(u => u.SaveChangesAsync(default), Times.Once);
     }
 }

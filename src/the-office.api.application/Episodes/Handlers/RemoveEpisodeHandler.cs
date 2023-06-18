@@ -18,7 +18,7 @@ public class RemoveEpisodeHandler : ICommandHandler<RemoveEpisodeRequest>
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Result> Handle(RemoveEpisodeRequest request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(RemoveEpisodeRequest request, CancellationToken cancellationToken = default)
     {
         var episode = await _episodeRepository.GetById(request.Id, cancellationToken);
         if (episode is null)
