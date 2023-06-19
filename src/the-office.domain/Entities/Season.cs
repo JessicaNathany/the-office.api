@@ -4,10 +4,6 @@ namespace the_office.domain.Entities;
 
 public class Season : Entity
 {
-    public Season()
-    {
-        
-    }
     public Season(int number, string title, int totalEpisodes, DateTime releaseDate, string summary)
     {
         Number = number;
@@ -51,4 +47,13 @@ public class Season : Entity
     /// List characters in the season
     /// </summary>
     public IEnumerable<Character> Characters { get; set; }
+
+    public void ChangeInfo(int number, string title, int totalEpisodes, DateTime releaseDate, string summary)
+    {
+        Number = number;
+        Title = title;
+        TotalEpisodes = totalEpisodes;
+        ReleaseDate = releaseDate;
+        Summary = summary;
+    }
 }

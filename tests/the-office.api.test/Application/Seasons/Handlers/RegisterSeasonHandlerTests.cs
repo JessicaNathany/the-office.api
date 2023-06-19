@@ -48,7 +48,7 @@ public sealed class RegisterSeasonHandlerTests : BaseTest
     }
     
     [Fact]
-    public async Task RegisterSeason_WhenSeasonExists_ShouldReturnFailureResultWithAlreadyExistsError()
+    public async Task RegisterSeason_WhenSeasonNotExists_ShouldReturnFailureResultWithAlreadyExistsError()
     {
         // Arrange
         var request = Fixture.Create<RegisterSeasonRequest>();

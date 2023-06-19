@@ -8,7 +8,7 @@ public sealed record RegisterEpisodeRequest : ICommand<EpisodeResponse>
     public string Name { get; set; }
     public DateTime AirDate { get; set; }
     public string Description { get; set; }
-    public Guid SeasonCode { get; set; }
-    public IEnumerable<Guid>? Characters { get; set; }
-    public bool HasCharacters => Characters is not null && Characters.Any();
+    public int SeasonNumber { get; set; }
+    public List<int>? CharacterIds { get; set; }
+    public bool HasCharacters => CharacterIds is not null && CharacterIds.Any();
 }

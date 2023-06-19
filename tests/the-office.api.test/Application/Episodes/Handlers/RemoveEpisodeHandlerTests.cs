@@ -1,6 +1,6 @@
+using AutoFixture;
 using the_office.api.application.Episodes.Handlers;
 using the_office.api.application.Episodes.Messaging.Requests;
-using the_office.api.test.Application.Common.Fakes;
 using the_office.domain.Entities;
 using the_office.domain.Errors;
 using the_office.domain.Repositories;
@@ -8,7 +8,7 @@ using the_office.domain.Repositories;
 namespace the_office.api.test.Application.Episodes.Handlers;
 
 [Collection("the-office")]
-public class RemoveEpisodeHandlerTests
+public class RemoveEpisodeHandlerTests : BaseTest
 {
     private readonly Mock<IEpisodeRepository> _episodeRepository = new();
     private readonly Mock<IUnitOfWork> _unitOfWork = new();
@@ -23,14 +23,14 @@ public class RemoveEpisodeHandlerTests
     public async Task RemoveEpisode_WhenEpisodeIsFound_ShouldRemoveEpisode()
     {
         // Arrange
-        var episode = EpisodeFaker.Create().Generate();
+        var episode = Fixture.Create<Episode>();
         var request = new RemoveEpisodeRequest(episode.Id);
         
         _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
             .ReturnsAsync(episode);
         
         // Act
-        var response = await _removeEpisodeHandler.Handle(request, CancellationToken.None);
+        var response = await _removeEpisodeHandler.Handle(request);
         
         // Assert
         response.IsSuccess.Should().BeTrue();
@@ -44,7 +44,7 @@ public class RemoveEpisodeHandlerTests
     public async Task RemoveEpisode_WhenEpisodeNotFound_ShouldFailWithEpisodeNotFound()
     {
         // Arrange
-        var episode = EpisodeFaker.Create().WithNull();
+        Episode? episode = null;
         var request = new RemoveEpisodeRequest(1);
         
         _episodeRepository.Setup(repository => repository.GetById(request.Id, CancellationToken.None))
