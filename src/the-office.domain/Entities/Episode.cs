@@ -4,6 +4,8 @@ namespace the_office.domain.Entities;
 
 public class Episode : Entity
 {
+    protected Episode() { }
+    
     public Episode(string name, string description, DateTime airDate, Season season)
     {
         Name = name;
