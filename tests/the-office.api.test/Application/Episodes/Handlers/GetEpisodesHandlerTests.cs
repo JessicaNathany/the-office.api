@@ -1,23 +1,22 @@
-using the_office.api.application.Common.Mappings;
+using AutoFixture;
+using MockQueryable.Moq;
 using the_office.api.application.Episodes.Handlers;
 using the_office.api.application.Episodes.Messaging.Requests;
-using the_office.api.test.Application.Common.Fakes;
+using the_office.domain.Entities;
 using the_office.domain.Repositories;
+using the_office.infrastructure.Data.Pagination;
 
 namespace the_office.api.test.Application.Episodes.Handlers;
 
 [Collection("the-office")]
-public class GetEpisodesHandlerTests
+public class GetEpisodesHandlerTests : BaseTest
 {
     private readonly Mock<IEpisodeRepository> _episodeRepository = new();
     private readonly GetEpisodesHandler _getEpisodesHandler;
 
     public GetEpisodesHandlerTests()
     {
-        IConfigurationProvider configuration = new MapperConfiguration(config => config.AddProfile<MappingProfile>());
-        var mapper = configuration.CreateMapper();
-
-        _getEpisodesHandler = new GetEpisodesHandler(_episodeRepository.Object, mapper);
+        _getEpisodesHandler = new GetEpisodesHandler(_episodeRepository.Object, Mapper);
     }
 
     [Fact]
@@ -29,15 +28,13 @@ public class GetEpisodesHandlerTests
         const int count = 30;
         const int expectedPageCount = 6;
 
-        var fakeEpisodes = EpisodeFaker
-            .Create()
-            .AsPaged(page, pageSize, count);
-
+        var fakeEpisodes = Fixture.CreateMany<Episode>(count).BuildMock();
+        var pagedEpisodes = new PagedList<Episode>(fakeEpisodes, page, pageSize);
         var request = new GetEpisodesRequest(page, pageSize);
 
         _episodeRepository
             .Setup(repository => repository.GetAll(request.Page, request.PageSize, CancellationToken.None))
-            .ReturnsAsync(fakeEpisodes);
+            .ReturnsAsync(pagedEpisodes);
 
         // Act
         var response = await _getEpisodesHandler.Handle(request);
@@ -63,15 +60,14 @@ public class GetEpisodesHandlerTests
         const int count = 0;
         const int expectedPageCount = 0;
 
-        var fakeEpisodes = EpisodeFaker
-            .Create()
-            .AsPaged(page, pageSize, count);
+        var fakeEpisodes = Fixture.CreateMany<Episode>(count).BuildMock();
+        var pagedEpisodes = new PagedList<Episode>(fakeEpisodes, page, pageSize);
 
         var request = new GetEpisodesRequest(page, pageSize);
 
         _episodeRepository
             .Setup(repository => repository.GetAll(request.Page, request.PageSize, CancellationToken.None))
-            .ReturnsAsync(fakeEpisodes);
+            .ReturnsAsync(pagedEpisodes);
 
         // Act
         var response = await _getEpisodesHandler.Handle(request);

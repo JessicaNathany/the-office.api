@@ -29,7 +29,7 @@ public sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRequ
 
     public async Task<Result<EpisodeResponse>> Handle(RegisterEpisodeRequest request, CancellationToken cancellationToken = default)
     {
-        var season = await _seasonRepository.Get(season => season.Code == request.SeasonCode, cancellationToken);
+        var season = await _seasonRepository.Get(season => season.Number == request.SeasonNumber, cancellationToken);
         if (season is null)
             return Result.Failure<EpisodeResponse>(EpisodeError.SeasonNotValid);
         
@@ -37,9 +37,9 @@ public sealed class RegisterEpisodeHandler : ICommandHandler<RegisterEpisodeRequ
 
         if (request.HasCharacters)
         {
-            var characters = await _characterRepository.GetAll(character => request.Characters!.Contains(character.Code), cancellationToken);
+            var characters = await _characterRepository.GetAll(character => request.CharacterIds!.Contains(character.Id), cancellationToken);
             
-            if(characters is null || characters.Count() != request.Characters!.Count())
+            if(characters is null || characters.Count != request.CharacterIds!.Count)
                 return Result.Failure<EpisodeResponse>(EpisodeError.CharactersNotValid);
             
             episode.AddCharacters(characters);

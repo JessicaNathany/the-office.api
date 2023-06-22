@@ -12,7 +12,7 @@ public class TheOfficeDbContextFactory : IDesignTimeDbContextFactory<TheOfficeDb
 
         var builder = new DbContextOptionsBuilder<TheOfficeDbContext>();
 
-        var connectionString = configuration.GetConnectionString(nameof(TheOfficeDbContext));
+        var connectionString = configuration.GetConnectionString("TheOfficeConnectionString");
 
         builder.UseNpgsql(connectionString);
 
