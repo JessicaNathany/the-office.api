@@ -21,8 +21,6 @@ public class AfterHandlerActionFilterAttribute : ActionFilterAttribute
         };
     }
 
-   
-
     public override void OnActionExecuted(ActionExecutedContext context)
     {
         HandleResult(context);
@@ -54,7 +52,7 @@ public class AfterHandlerActionFilterAttribute : ActionFilterAttribute
             }
             else
             {
-                context.Result = new OkResult();
+                context.Result = new NoContentResult();
             }
         }
     }

@@ -4,7 +4,6 @@ using System.Linq.Expressions;
 using the_office.api.application.Characters.Handlers;
 using the_office.api.application.Characters.Messaging.Requests;
 using the_office.api.application.Characters.Messaging.Response;
-using the_office.api.test.Application.Episodes.Fakes;
 using the_office.domain.Entities;
 using the_office.domain.Repositories;
 

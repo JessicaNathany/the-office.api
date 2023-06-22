@@ -21,7 +21,7 @@ public sealed class GetSeasonByIdHandlerTests : BaseTest
 
     [Fact]
     public async Task GetSeasonById_WhenSeasonExists_ShouldReturnSeasonResponse()
-    {
+    { 
         // Arrange
         var seasons = Fixture.Create<List<Season>>()
             .BuildMock();

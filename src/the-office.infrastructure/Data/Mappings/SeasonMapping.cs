@@ -25,7 +25,6 @@ public class SeasonMapping : IEntityTypeConfiguration<Season>
             .IsRequired();
 
         builder.Property(b => b.Summary)
-            .HasMaxLength(750)
             .IsRequired();
 
         builder.Property(b => b.ReleaseDate)

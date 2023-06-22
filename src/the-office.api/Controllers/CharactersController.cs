@@ -56,4 +56,14 @@ public class CharactersController : ApiController
     {
         return await Sender.Send(request);
     }
+
+    [HttpDelete("{id:int}")]
+    [ProducesResponseType(typeof(Result), StatusCodes.Status200OK)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
+    [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
+    public async Task<Result> Remove([FromRoute] int id)
+    {
+        var request = new RemoveCharacterRequest(id);
+        return await Sender.Send(request);
+    }
 }

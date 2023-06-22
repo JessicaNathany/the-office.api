@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using the_office.infrastructure.Data.Context;
@@ -11,9 +12,11 @@ using the_office.infrastructure.Data.Context;
 namespace the_office.infrastructure.Data.Migrations
 {
     [DbContext(typeof(TheOfficeDbContext))]
-    partial class TheOfficeDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230619010500_IncreaseSummaryField")]
+    partial class IncreaseSummaryField
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

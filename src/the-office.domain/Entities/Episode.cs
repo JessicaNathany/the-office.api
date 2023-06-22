@@ -2,7 +2,7 @@
 
 namespace the_office.domain.Entities;
 
-public sealed class Episode : Entity
+public class Episode : Entity
 {
     protected Episode() { }
     
