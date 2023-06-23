@@ -16,6 +16,7 @@ public static class DependencyInjectionConfig
         {
             config.RegisterServicesFromAssembly(AssemblyReference.Assembly);
             config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationBehavior<,>));
+            config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
         });
         
         services.AddValidatorsFromAssembly(AssemblyReference.Assembly, includeInternalTypes: true);
