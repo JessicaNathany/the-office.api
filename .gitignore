@@ -17,7 +17,6 @@ appsettings.json
 *.user
 *.suo
 *.userprefs
-/src/the-office.api/appsettings.json
 /src/the-office.api/appsettings.Development.json
 /src/the-office.api/appsettings.Development.json
 /src/the-office.api/appsettings.json
