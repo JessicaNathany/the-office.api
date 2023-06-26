@@ -20,14 +20,17 @@ builder.Services.ResolveDependencies(builder.Host);
 // Swagger Config
 builder.Services.AddSwaggerConfiguration();
 
+// Health Check
+builder.Services.AddHealthChecksConfiguration();
+
 // Serilog Config
 builder.Host.AddSerilogConfiguration(builder.Configuration);
-    
+
 var app = builder.Build();
 
 app.UseSwaggerSetup();
 
-// app.UseHealthChecks();
+app.UseHealthChecks();
 
 app.UseSerilogRequestLogging();
 
