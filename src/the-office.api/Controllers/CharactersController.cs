@@ -33,9 +33,10 @@ public class CharactersController : ApiController
     [ProducesResponseType(typeof(CharacterResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status400BadRequest)]
     [ProducesResponseType(typeof(ProblemDetails), StatusCodes.Status404NotFound)]
-    public async Task<Result<CharacterResponse>> Update([FromRoute] int id, [FromBody] UpdateCharacterRequest request)
+    public async Task<Result<CharacterResponse>> UpdateAsync([FromRoute] int id, [FromBody] UpdateCharacterRequest request)
     {
-        throw new NotImplementedException();
+        request.Id = id;
+        return await Sender.Send(request);
     }
 
     [HttpGet]
