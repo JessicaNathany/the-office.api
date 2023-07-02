@@ -28,11 +28,18 @@ Abra o navegador em http://localhost:5000/swagger.
 Isto exibirá a interface de usuário Swagger, que fornece uma interface amigável para explorar a API 
 pontos finais. A API fornece os seguintes pontos finais:<br/>
 
-- `GET /characters` - retrieves a list of all characters in The Office.
-- `GET /characters/{id}` - retrieves a specific character by ID.
-- `GET /episodes` - retrieves a list of all episodes in The Office.
-- `GET /episodes/{id}` - retrieves a specific episode by ID.
-- `GET /quotes/characters/{id}` - retrieves a list of all better frases for specific character in The Office.<br/><br/>
+- `GET /characters` - retorna uma lista de personagens do The Office.
+- `GET /characters/{id}` - retorna um personagem específico por ID.
+- `POST /character` - adiciona um personagem novo no The Office.
+- `DELETE /character` - remove um personagem no The Office.
+- `GET /episodes` - retorna uma lista de episódios no The Office.
+- `GET /episodes/{id}` - retorna um episódio específico por ID.
+- `POST /episode` - aadiciona um episódio novo no The Office.
+- `DELETE /episode` - remove um episódio no The Office.
+- `GET /seasons` - retorna uma lista de temporadas do The Office.
+- `GET /seasons/{id}` - retorna uma temporada específica por ID.
+- `POST /seasons` - adiciona uma temporada nova no The Office.
+- `DELETE /seasons` - remove uma temporada no The Office.<br/><br/>
 
 
 1. **Presentation Layer**
