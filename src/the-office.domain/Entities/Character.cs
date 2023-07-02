@@ -49,4 +49,13 @@ public class Character : Entity
     /// The episodes this character stars in
     /// </summary>
     public IEnumerable<Episode> Episodes { get; set; }
+
+    public void ChangeInfo(string name, string nameActor, bool status, string gender, string imageUrl, string job)
+    {
+        Name = name;
+        NameActor = nameActor;
+        Status = status;
+        Gender = gender;
+        ImageUrl = imageUrl;
+    }
 }

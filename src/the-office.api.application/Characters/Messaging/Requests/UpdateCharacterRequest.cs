@@ -5,6 +5,7 @@ namespace the_office.api.application.Characters.Messaging.Requests
 {
     public sealed record UpdateCharacterRequest : ICommand<CharacterResponse>
     {
+        public int Id { get; set; }
         public string Name { get; set; }
 
         public string NameActor { get; set; }
