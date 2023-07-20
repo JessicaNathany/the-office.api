@@ -28,18 +28,7 @@ Open a web browser and navigate to http://localhost:5000/swagger.
 This will display the Swagger UI, which provides a user-friendly interface for exploring the API 
 endpoints. The API provides the following endpoints:<br/>
 
-- `GET /characters` - retrieves a list of all characters in The Office.
-- `GET /characters/{id}` - retrieves a specific character by ID.
-- `POST /character` - add a character in The Office.
-- `DELETE /character` - remove a character in The Office.
-- `GET /episodes` - retrieves a list of all episodes in The Office.
-- `GET /episodes/{id}` - retrieves a specific episode by ID.
-- `POST /episode` - add an episode in The Office.
-- `DELETE /episode` - remove an episode in The Office.
-- `GET /seasons` - retrieves a list of all seasons in The Office.
-- `GET /seasons/{id}` - retrieves a specific season by ID.
-- `POST /seasons` - add a season in The Office.
-- `DELETE /seasons` - remove a season in The Office.<br/><br/>
+
 
 1. **Presentation Layer**
   - Name: the-office.api<br/>
@@ -86,9 +75,16 @@ To get started with the API, follow these steps: <br/>
 ## Current features :clipboard: <br/>
 - `GET /characters` - retrieves a list of all characters in The Office.
 - `GET /characters/{id}` - retrieves a specific character by ID.
+- `POST /character` - add a character in The Office.
+- `DELETE /character` - remove a character in The Office.
 - `GET /episodes` - retrieves a list of all episodes in The Office.
 - `GET /episodes/{id}` - retrieves a specific episode by ID.
-- `GET /quotes/characters/{id}` - retrieves a list of all better frases for specific character in The Office
+- `POST /episode` - add an episode in The Office.
+- `DELETE /episode` - remove an episode in The Office.
+- `GET /seasons` - retrieves a list of all seasons in The Office.
+- `GET /seasons/{id}` - retrieves a specific season by ID.
+- `POST /seasons` - add a season in The Office.
+- `DELETE /seasons` - remove a season in The Office.<br/><br/>
 
 ## Next  features :dart: <br/>
 - `GET /gifs` - retrieves a list of all gifs in The Office.
