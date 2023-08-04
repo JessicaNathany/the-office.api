@@ -47,8 +47,7 @@ endpoints. The API provides the following endpoints:<br/>
   - Description: The layer is responsible for access database. <br/>
     It is in this layer that the configuration database, context class, migrations, repositories and configuration the MediatR.<br/>
     
- ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/a2f735b4-d2d0-4d7c-9aa5-74eeedef3f21)
-
+![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/7bd515f8-7ae9-4a34-ada5-563271f75008)
 
 
 ##  Getting Started 🚀<br/>
