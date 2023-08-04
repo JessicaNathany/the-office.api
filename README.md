@@ -13,10 +13,6 @@
 
 [🇧🇷 Portuguese version](/README.pt-BR.md)
 
-	
- <h4 align="center"> 
-	🚧  Project 🚀 under construction...  🚧
- </h4>
 
 This is a .NET 7 Web API that provides endpoints to access and manage data related to the TV show The Office. <br/>
 The API allows users to retrieve information about characters, episodes, and quotes from the show. <br/><br/>
