@@ -11,12 +11,6 @@
    <img src=" https://img.shields.io/badge/Status-development-green"/>  
 </p>
 
-
-
- <h4 align="center"> 
-	🚧  Project 🚀 em construção...  🚧
- </h4>
-
 Este é um .NET 7 Web API que fornece pontos finais para acessar e gerenciar dados relacionados ao programa de TV The Office.<br/>
 A API permite que os usuários recuperem informações sobre personagens, episódios e citações do programa.<br/><br/>
 
@@ -63,9 +57,7 @@ pontos finais. A API fornece os seguintes pontos finais:<br/>
   - Descrição: Esta camada é responsável pelo acesso a dados. <br/>
     Nesta camada contém configurações de conexões de banco, Migrations, Mappings, Repositories e configurações do MediatR.<br/>
     
-  ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/66dd6d79-bab2-4565-a6bf-8a179041ce67)
-
-
+ ![image](https://github.com/JessicaNathany/the-office.api/assets/11943572/7bd515f8-7ae9-4a34-ada5-563271f75008)
 
 ##  Como começar 🚀<br/>
 Para começar com a API, clone este repositório para sua máquina local e execute o seguinte <br/>
